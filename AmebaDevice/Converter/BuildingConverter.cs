@@ -12,14 +12,14 @@ namespace AmebaDevice.Converter
         public static BuildingDTO convertToDto(Building b)
         {
             BuildingDTO building = new BuildingDTO();
-            building.ID=b.BuildingID;
-            building.Cap=b.Cap;
-            building.City=b.Citta;
-            building.Address = b.Indirizzo;
-            building.Interno = b.Interno;
+            building.id=b.BuildingID;
+            building.cap=b.Cap;
+            building.city=b.Citta;
+            building.address = b.Indirizzo;
+            building.interno = b.Interno;
             
             if (b.Customer != null)
-                building.CustomerDTO=CustomerConverter.convertToDto(b.Customer);
+                building.customer=CustomerConverter.convertToDto(b.Customer);
             /*
             if (b.getOwner() != null)
                 building.setOwner(CustomerConverter.convertToDto(b.getOwner()));
@@ -30,18 +30,18 @@ namespace AmebaDevice.Converter
         public static Building convertToBuilding(BuildingDTO b)
         {
             Building building = new Building();
-            building.BuildingID = b.ID;
-            building.Cap = b.Cap;
-            building.Citta = b.City;
-            building.Indirizzo = b.Address;
-            building.Interno = b.Interno;
+            building.BuildingID = b.id;
+            building.Cap = b.cap;
+            building.Citta = b.city;
+            building.Indirizzo = b.address;
+            building.Interno = b.interno;
 
             /*
             if (b.getOwner() != null)
                 building.setOwner(CustomerConverter.convertToCustomer(b.getOwner()));
                 */
-            if (b.CustomerDTO != null)
-                building.Customer=CustomerConverter.convertToCustomer(b.CustomerDTO);
+            if (b.customer != null)
+                building.Customer=CustomerConverter.convertToCustomer(b.customer);
                 
             return building;
         }

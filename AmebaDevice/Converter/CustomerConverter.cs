@@ -12,26 +12,26 @@ namespace AmebaDevice.Converter
         public static CustomerDTO convertToDto(Customer c)
         {
             CustomerDTO customerDTO = new CustomerDTO();
-            customerDTO.ID=c.CustomerID;
-            customerDTO.Nome=c.Nome;
-            customerDTO.Cognome=c.Cognome;
-            customerDTO.Email=c.Email;
+            customerDTO.id=c.CustomerID;
+            customerDTO.nome=c.Nome;
+            customerDTO.cognome=c.Cognome;
+            customerDTO.email=c.Email;
             customerDTO.username=c.Username;
-            customerDTO.Password=c.Password;
-            customerDTO.User_role=c.User_role;
+            customerDTO.password=c.Password;
+            customerDTO.userRole=c.User_role;
             return customerDTO;
         }
 
         public static Customer convertToCustomer(CustomerDTO c)
         {
             Customer customer = new Customer();
-            customer.CustomerID = c.ID;
-            customer.Nome = c.Nome;
-            customer.Cognome = c.Cognome;
-            customer.Email = c.Email;
+            customer.CustomerID = c.id;
+            customer.Nome = c.nome;
+            customer.Cognome = c.cognome;
+            customer.Email = c.email;
             customer.Username = c.username;
-            customer.Password = c.Password;
-            customer.User_role = c.User_role;
+            customer.Password = c.password;
+            customer.User_role = c.userRole;
             return customer;
         }
 

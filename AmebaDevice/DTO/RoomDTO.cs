@@ -8,10 +8,10 @@ namespace AmebaDevice.DTO
     public class RoomDTO
     {
 
-        public int ID { get; set; }
-        public string NomeRoom{ get; set; }
-        public string Descrizione { get; set; }
-        public FloorDTO Floor { get; set; }
+        public int id { get; set; }
+        public string nomeRoom{ get; set; }
+        public string descrizione { get; set; }
+        public FloorDTO floor { get; set; }
         
 
         public RoomDTO()
@@ -20,10 +20,10 @@ namespace AmebaDevice.DTO
 
         public RoomDTO(int id, String nomeRoom, String descrizione, FloorDTO floor)
         {
-            this.ID = id;
-            this.NomeRoom = nomeRoom;
-            this.Descrizione = descrizione;
-            this.Floor = floor;
+            this.id = id;
+            this.nomeRoom = nomeRoom;
+            this.descrizione = descrizione;
+            this.floor = floor;
         }
 
         

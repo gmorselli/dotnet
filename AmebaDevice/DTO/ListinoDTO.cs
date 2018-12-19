@@ -7,11 +7,11 @@ namespace AmebaDevice.DTO
 {
     public class ListinoDTO
     {
-        public int ID { get; set; }
-        public string Anno { get; set; }
-        public string Nome { get; set; }
-        public CustomerDTO InstallerDTO { get; set; }
-        public CustomerDTO ManufacturerDTO { get; set; }
+        public int id { get; set; }
+        public string anno { get; set; }
+        public string nomeListino { get; set; }
+        public CustomerDTO installer { get; set; }
+        public CustomerDTO idManufacturer { get; set; }
 
         public ListinoDTO()
         {
@@ -20,11 +20,11 @@ namespace AmebaDevice.DTO
 
         public ListinoDTO(int id, string anno, string nome, CustomerDTO installerDTO, CustomerDTO manufacturerDTO)
         {
-            this.ID = id;
-            this.Anno = anno;
-            this.Nome = nome;
-            this.InstallerDTO = installerDTO;
-            this.ManufacturerDTO = manufacturerDTO;
+            this.id = id;
+            this.anno = anno;
+            this.nomeListino = nome;
+            this.installer = installerDTO;
+            this.idManufacturer = manufacturerDTO;
         }
 
     }

@@ -11,28 +11,28 @@ namespace AmebaDevice.Converter
         public static ThingDTO convertToDto(Thing t)
         {
             ThingDTO thingDTO = new ThingDTO();
-            thingDTO.ID = t.ThingID;
-            thingDTO.Num_Uscite = t.Num_Uscite;
-            thingDTO.Prezzo = t.Prezzo;
+            thingDTO.id = t.ThingID;
+            thingDTO.numUscite = t.Num_Uscite;
+            thingDTO.prezzo = t.Prezzo;
             if (t.Customer != null)
-                thingDTO.CustomerDTO = CustomerConverter.convertToDto(t.Customer);
+                thingDTO.customer = CustomerConverter.convertToDto(t.Customer);
             else
-                thingDTO.CustomerDTO = null;
-            thingDTO.BuildingDTO = BuildingConverter.convertToDto(t.Building);
+                thingDTO.customer = null;
+            thingDTO.building = BuildingConverter.convertToDto(t.Building);
             return thingDTO;
         }
 
         public static Thing convertToThing(ThingDTO tDTO)
         {
             Thing thing = new Thing();
-            thing.ThingID = tDTO.ID;
-            thing.Num_Uscite = tDTO.Num_Uscite;
-            thing.Prezzo = tDTO.Prezzo;
-            if (tDTO.CustomerDTO != null)
-                thing.Customer = CustomerConverter.convertToCustomer(tDTO.CustomerDTO);
+            thing.ThingID = tDTO.id;
+            thing.Num_Uscite = tDTO.numUscite;
+            thing.Prezzo = tDTO.prezzo;
+            if (tDTO.customer!= null)
+                thing.Customer = CustomerConverter.convertToCustomer(tDTO.customer);
             else
                 thing.Customer = null;
-            thing.Building = BuildingConverter.convertToBuilding(tDTO.BuildingDTO);
+            thing.Building = BuildingConverter.convertToBuilding(tDTO.building);
             return thing;
         }
     }

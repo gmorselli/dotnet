@@ -7,12 +7,12 @@ namespace AmebaDevice.DTO
 {
     public class ItemDTO
     {
-        public int ID { get; set; }
-        public string Seriale { get; set; }
-        public string ConsumoEnergetico { get; set; }
-        public ItemTypeDTO ItemTypeDTO { get; set; }
-        public RoomDTO RoomDTO { get; set; }
-        public ThingDTO ThingDTO { get; set; }
+        public int id { get; set; }
+        public string seriale { get; set; }
+        public string consumoEnergetico { get; set; }
+        public ItemTypeDTO itemType { get; set; }
+        public RoomDTO room { get; set; }
+        public ThingDTO thing { get; set; }
 
         public ItemDTO()
         {
@@ -21,12 +21,12 @@ namespace AmebaDevice.DTO
 
         public ItemDTO(int ID, string Seriale, string ConsumoEnergetico, ItemTypeDTO ItemTypeDTO, RoomDTO RoomDTO, ThingDTO ThingDTO)
         {
-            this.ID = ID;
-            this.Seriale = Seriale;
-            this.ConsumoEnergetico = ConsumoEnergetico;
-            this.ItemTypeDTO = ItemTypeDTO;
-            this.RoomDTO = RoomDTO;
-            this.ThingDTO = ThingDTO;
+            this.id = ID;
+            this.seriale = Seriale;
+            this.consumoEnergetico = ConsumoEnergetico;
+            this.itemType = ItemTypeDTO;
+            this.room = RoomDTO;
+            this.thing = ThingDTO;
         }
     }
 

@@ -7,11 +7,11 @@ namespace AmebaDevice.DTO
 {
     public class ThingDTO
     {
-        public int ID { get; set; }
-        public string Num_Uscite { get; set; }
-        public double Prezzo { get; set; }
-        public CustomerDTO CustomerDTO { get; set; }
-        public BuildingDTO BuildingDTO { get; set; }
+        public int id { get; set; }
+        public string numUscite { get; set; }
+        public double prezzo { get; set; }
+        public CustomerDTO customer { get; set; }
+        public BuildingDTO building { get; set; }
 
         public ThingDTO()
         {
@@ -19,11 +19,11 @@ namespace AmebaDevice.DTO
 
         public ThingDTO(int id, String num_Uscite, double prezzo, CustomerDTO customerDTO, BuildingDTO buildingDTO)
         {
-            this.ID = id;
-            this.Num_Uscite = num_Uscite;
-            this.Prezzo = prezzo;
-            this.CustomerDTO = customerDTO;
-            this.BuildingDTO = buildingDTO;
+            this.id = id;
+            this.numUscite = num_Uscite;
+            this.prezzo = prezzo;
+            this.customer = customerDTO;
+            this.building = buildingDTO;
         }
 
     }

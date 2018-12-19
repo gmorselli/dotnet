@@ -7,13 +7,12 @@ namespace AmebaDevice.DTO
 {
     public class ItemTypeDTO
     {
-        public int ID { get; set; }
-        public string Categoria { get; set; }
-        public string Marca { get; set; }
-        public string Modello { get; set; }
-
-        public string Descrizione { get; set; }
-        public CustomerDTO CustomerDTO { get; set; }
+        public int id { get; set; }
+        public string categoria { get; set; }
+        public string marca { get; set; }
+        public string modello { get; set; }
+        public string descrizione { get; set; }
+        public CustomerDTO customer { get; set; }
 
         public ItemTypeDTO()
         {
@@ -22,12 +21,12 @@ namespace AmebaDevice.DTO
 
         public ItemTypeDTO(int ID, string Categoria,string Marca, string Modello, string Descrizione, CustomerDTO CustomerDTO)
         {
-            this.ID = ID;
-            this.Categoria = Categoria;
-            this.Marca = Marca;
-            this.Modello = Modello;
-            this.Descrizione = Descrizione;
-            this.CustomerDTO = CustomerDTO;
+            this.id = ID;
+            this.categoria = Categoria;
+            this.marca = Marca;
+            this.modello = Modello;
+            this.descrizione = Descrizione;
+            this.customer = CustomerDTO;
         }
 
     }

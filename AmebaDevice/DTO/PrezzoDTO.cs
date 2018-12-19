@@ -8,10 +8,10 @@ namespace AmebaDevice.DTO
     public class PrezzoDTO
     {
 
-        public int ID { get; set; }
-        public double Prezzo { get; set; }
-        public ListinoDTO ListinoDTO { get; set; }
-        public ItemTypeDTO ItemTypeDTO { get; set; }
+        public int id { get; set; }
+        public double prezzo { get; set; }
+        public ListinoDTO listino { get; set; }
+        public ItemTypeDTO itemType { get; set; }
 
         public PrezzoDTO()
         {
@@ -20,10 +20,10 @@ namespace AmebaDevice.DTO
 
         public PrezzoDTO(int id, double prezzo, ListinoDTO listinoDTO, ItemTypeDTO itemTypeDTO)
         {
-            this.ID = id;
-            this.Prezzo = prezzo;
-            this.ListinoDTO = listinoDTO;
-            this.ItemTypeDTO = itemTypeDTO;
+            this.id = id;
+            this.prezzo = prezzo;
+            this.listino = listinoDTO;
+            this.itemType = itemTypeDTO;
         }
 
     }

@@ -11,26 +11,26 @@ namespace AmebaDevice.Converter
         public static ItemTypeDTO ConverToDTO (ItemType item)
         {
             ItemTypeDTO ItemType = new ItemTypeDTO();
-            ItemType.ID = item.ItemTypeID;
-            ItemType.Categoria = item.Categoria;
-            ItemType.Marca = item.Marca;
-            ItemType.Modello = item.Modello;
-            ItemType.Descrizione = item.Descrizione;
+            ItemType.id = item.ItemTypeID;
+            ItemType.categoria = item.Categoria;
+            ItemType.marca = item.Marca;
+            ItemType.modello = item.Modello;
+            ItemType.descrizione = item.Descrizione;
             if (item.Customer != null)
-                ItemType.CustomerDTO = CustomerConverter.convertToDto(item.Customer);
+                ItemType.customer = CustomerConverter.convertToDto(item.Customer);
             return ItemType;
         }
 
         public static ItemType ConvertToItemType(ItemTypeDTO item)
         {
             ItemType ItemType = new ItemType();
-            ItemType.ItemTypeID = item.ID;
-            ItemType.Categoria = item.Categoria;
-            ItemType.Marca = item.Marca;
-            ItemType.Modello = item.Modello;
-            ItemType.Descrizione = item.Descrizione;
-            if(item.CustomerDTO!=null)
-                ItemType.Customer = CustomerConverter.convertToCustomer(item.CustomerDTO);
+            ItemType.ItemTypeID = item.id;
+            ItemType.Categoria = item.categoria;
+            ItemType.Marca = item.marca;
+            ItemType.Modello = item.modello;
+            ItemType.Descrizione = item.descrizione;
+            if(item.customer!=null)
+                ItemType.Customer = CustomerConverter.convertToCustomer(item.customer);
             return ItemType;
         }
     }

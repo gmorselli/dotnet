@@ -12,26 +12,26 @@ namespace AmebaDevice.Converter
         public static ListinoDTO convertToDTO(Listino l)
         {
             ListinoDTO lDTO = new ListinoDTO();
-            lDTO.ID = l.ListinoID;
-            lDTO.Anno = l.Anno;
-            lDTO.Nome = l.Nome;
+            lDTO.id = l.ListinoID;
+            lDTO.anno = l.Anno;
+            lDTO.nomeListino = l.Nome;
             if(l.Installer!=null)
-                lDTO.InstallerDTO = CustomerConverter.convertToDto(l.Installer);
+                lDTO.installer = CustomerConverter.convertToDto(l.Installer);
             if (l.Manufacturer != null)
-                lDTO.ManufacturerDTO = CustomerConverter.convertToDto(l.Manufacturer);
+                lDTO.idManufacturer = CustomerConverter.convertToDto(l.Manufacturer);
             return lDTO;
         }
 
         public static Listino convertToListino(ListinoDTO lDTO)
         {
             Listino l = new Listino();
-            l.ListinoID = lDTO.ID;
-            l.Anno = lDTO.Anno;
-            l.Nome = lDTO.Nome;
-            if(lDTO.InstallerDTO!=null)
-                l.Installer = CustomerConverter.convertToCustomer(lDTO.InstallerDTO);
-            if (lDTO.ManufacturerDTO != null)
-                l.Manufacturer = CustomerConverter.convertToCustomer(lDTO.ManufacturerDTO);
+            l.ListinoID = lDTO.id;
+            l.Anno = lDTO.anno;
+            l.Nome = lDTO.nomeListino;
+            if(lDTO.installer!=null)
+                l.Installer = CustomerConverter.convertToCustomer(lDTO.installer);
+            if (lDTO.idManufacturer != null)
+                l.Manufacturer = CustomerConverter.convertToCustomer(lDTO.idManufacturer);
             return l;
         }
 

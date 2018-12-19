@@ -11,20 +11,20 @@ namespace AmebaDevice.Converter
         public static RoomDTO convertToDto(Room r)
         {
             RoomDTO room = new RoomDTO();
-            room.ID=r.RoomId;
-            room.Descrizione=r.Descrizione;
-            room.Floor=FloorConverter.convertToDto(r.Floor);
-            room.NomeRoom=r.Nome;
+            room.id=r.RoomId;
+            room.descrizione=r.Descrizione;
+            room.floor=FloorConverter.convertToDto(r.Floor);
+            room.nomeRoom=r.Nome;
             return room;
         }
 
         public static Room convertToRoom(RoomDTO r)
         {
             Room room = new Room();
-            room.RoomId = r.ID;
-            room.Descrizione = r.Descrizione;
-            room.Floor = FloorConverter.convertToFloor(r.Floor);
-            room.Nome = r.NomeRoom;
+            room.RoomId = r.id;
+            room.Descrizione = r.descrizione;
+            room.Floor = FloorConverter.convertToFloor(r.floor);
+            room.Nome = r.nomeRoom;
             return room;
         }
     }

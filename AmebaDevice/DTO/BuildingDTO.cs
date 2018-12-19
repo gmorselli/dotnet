@@ -7,16 +7,16 @@ namespace AmebaDevice.DTO
 {
     public class BuildingDTO
     {
-        public int ID { get; set; }
+        public int id { get; set; }
 
-        public String Address { get; set; }
+        public String address { get; set; }
 
-        public String City { get; set; }
+        public String city { get; set; }
 
-        public String Cap { get; set; }
+        public String cap { get; set; }
 
-        public String Interno { get; set; }
-        public CustomerDTO CustomerDTO { get; set; }
+        public String interno { get; set; }
+        public CustomerDTO customer { get; set; }
 
 
         /*  ALTERNATIVAMENTE
@@ -82,11 +82,11 @@ namespace AmebaDevice.DTO
 
         public BuildingDTO(int buildingId, String indirizzo, String citta, String cap, String interno, CustomerDTO owner, CustomerDTO installer)
         {
-            this.ID = buildingId;
-            this.Address = indirizzo;
-            this.City = citta;
-            this.Cap = cap;
-            this.Interno = interno;
+            this.id = buildingId;
+            this.address = indirizzo;
+            this.city = citta;
+            this.cap = cap;
+            this.interno = interno;
         }
 
        

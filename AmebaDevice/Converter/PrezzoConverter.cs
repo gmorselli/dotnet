@@ -12,20 +12,20 @@ namespace AmebaDevice.Converter
         public static PrezzoDTO convertToDTO(Prezzo p)
         {
             PrezzoDTO pDTO = new PrezzoDTO();
-            pDTO.ID = p.PrezzoID;
-            pDTO.Prezzo = p.Price;
-            pDTO.ItemTypeDTO = ItemTypeConverter.ConverToDTO(p.ItemType);
-            pDTO.ListinoDTO = ListinoConverter.convertToDTO(p.Listino);
+            pDTO.id = p.PrezzoID;
+            pDTO.prezzo = p.Price;
+            pDTO.itemType = ItemTypeConverter.ConverToDTO(p.ItemType);
+            pDTO.listino = ListinoConverter.convertToDTO(p.Listino);
             return pDTO;
         }
 
         public static Prezzo convertToPrezzo(PrezzoDTO pDTO)
         {
             Prezzo p = new Prezzo();
-            p.PrezzoID = pDTO.ID;
-            p.Price = pDTO.Prezzo;
-            p.ItemType = ItemTypeConverter.ConvertToItemType(pDTO.ItemTypeDTO);
-            p.Listino = ListinoConverter.convertToListino(pDTO.ListinoDTO);
+            p.PrezzoID = pDTO.id;
+            p.Price = pDTO.prezzo;
+            p.ItemType = ItemTypeConverter.ConvertToItemType(pDTO.itemType);
+            p.Listino = ListinoConverter.convertToListino(pDTO.listino);
             return p;
         }
 
