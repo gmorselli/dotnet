@@ -1,0 +1,21 @@
+<body>
+		<div class="login-form">
+			<h2 class="login-text">Login</h2>
+			<p class="insert" >Inserisci i tuoi dati</p>
+			<div>
+          <form class="userForm" #f="ngForm">
+					<div class="form-group">
+						<div class="col-25">
+						<input type="text" class="form-control" id="inputUser" name="username"
+							placeholder="Inserisci Username" ngModel>
+							</div>
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" id="inputPassword"
+							name="password" placeholder="Inserisci Password" ngModel>
+					</div>
+					<button class="loginButton" type="submit" (click)="login(f)">Login</button>
+				</form>
+			</div>
+		</div>
+</body>

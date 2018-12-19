@@ -1,0 +1,26 @@
+<body>
+	<div class="readCustomer">
+		<img src="https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/user.png"
+			class="imgSuperUser">
+	<h1>Listini</h1>
+	</div>
+	<div class="readTable">
+		<table class="table">
+				<thead>
+					<tr>
+							<th>Nome listino</th>
+                            <th>Anno</th>
+                            <th>Id Manufacturer</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let lista of listino">			
+							<td >{{lista.nomeListino}}</td>
+                            <td >{{lista.anno}}</td>
+                            <td >{{lista.idManufacturer}}</td>
+					</tr>
+				</tbody>
+		</table>
+		</div>
+		
+</body>

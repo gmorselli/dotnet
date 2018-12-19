@@ -1,0 +1,72 @@
+<body>
+  <div class="row" id="blank">
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-6">
+      <div *ngIf="paymentList" id="uno" class="table-responsive">
+        <h4>Cronologia pagamenti</h4>
+        <br>
+        <table class="table table-striped table-success table-sm">
+
+          <tr>
+            <th>Id pagamento</th>
+            <th>Quantità</th>
+            <th>Id sosta</th>
+          </tr>
+
+
+          <tr *ngFor="let payment of paymentList">
+            <td>{{payment.id}}</td>
+            <td>{{payment.quantity}}</td>
+            <td>{{payment.id_stop}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-6">
+      <div *ngIf="transactionList" id="due" class="table-responsive">
+        <h4>Cronologia transazioni</h4>
+        <br>
+        <table class="table table-striped table-success table-sm">
+          <tr>
+            <th>Id transazione</th>
+            <th>Valore</th>
+            <th>Data</th>
+            <th>Numero carta</th>
+          </tr>
+
+          <tr *ngFor="let transaction of transactionList">
+            <td>{{transaction.id}}</td>
+            <td>{{transaction.quantity}}</td>
+            <td>{{transaction.date}}</td>
+            <td>{{transaction.card_number}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="blank">
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-6">
+      <h4>Ricarica il tuo conto</h4>
+      <br>
+      <p>Seleziona l'importo che desideri ricaricare: 
+      <button (click)="modifyWallet(3)">3€</button> 
+      <button (click)="modifyWallet(10)">10€</button>
+      <button (click)="modifyWallet(25)">25€</button>
+      </p>
+
+    </div>
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-6">
+      
+      <h4>Stato del wallet: {{wallet.amount}}</h4>
+      
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+</body>

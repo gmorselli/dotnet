@@ -1,0 +1,24 @@
+<body>
+        <h1>Elimina una room:</h1>
+        <h2 class="things">Room del floor con id {{floorId}} </h2>
+        <div class="thingDiv">
+        <table class="thingTable table" style="margin-top:-1%;">
+            <tr><th>Id: </th>
+                <th>Nome: </th>
+                <th>Descrizione: </th>
+            </tr>
+            <tr *ngFor="let room of rooms">
+                <td>{{room.id}}</td>
+                <td>{{room.nomeFloor}}</td>
+                <td>{{room.descrizione}}</td>
+            </tr>
+        </table>
+        <h2>Quale room vuoi eliminare?</h2>
+        <form #f="ngForm">
+            <select id="id" name="id" ngModel="room.id">
+                <option *ngFor="let room of rooms" [attr.value]="room.id">{{room.id}}</option>
+            </select>
+            <button type ="submit" (click) = "delete(f)">Elimina</button><br>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,70 @@
+body {
+	margin: 0;
+	font: 10px normal Verdana, Arial, Helvetica, sans-serif;
+	background: #1d1d1d;
+	color: #fff;
+	background-image:url("http://www.ipvision.it/wp-content/uploads/2016/01/wallpaper-blu-scuro.jpg"); 
+	background-repeat:no-repeat;
+	background-position:center; 
+	padding:10px;
+}
+
+.thingDiv{
+	display:flex;
+	align-items:center;
+    padding-top: 2%;
+}
+
+.thingTable{
+	width:40%;
+	margin-left:5%;
+}
+
+.table {
+    background: #34495E;
+   color: #fff;
+   border-radius: .4em;
+   overflow: hidden;
+     width: 60%;
+}
+
+.table tr {
+   border-color: #46637f;
+   font-size:large;
+}
+
+.table th {
+   color: #dd5;
+}
+
+.insertDiv{
+	display: flex;
+	align-items: center;
+	padding-left:30%;
+	padding-bottom:2%;
+}
+
+.imgThing{
+	width: 18%; 
+	padding-right:2%;
+}
+
+.customerLink{
+	display: block;
+    height: 25%;
+    background: #435261 none repeat scroll 0 0;
+    padding: 8px;
+    text-align: center;
+    border-radius: 8px;
+    border-color: #fefefe;
+    font-weight: bold;
+    font-size: x-large; 
+    text-decoration: none;
+    color:white;
+}
+
+h1 {
+	font: 5em normal Georgia, 'Times New Roman', Times, serif;
+	text-align:center;
+	padding-bottom: 10px;
+}

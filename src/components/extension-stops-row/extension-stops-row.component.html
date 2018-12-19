@@ -1,0 +1,30 @@
+<td>{{stop.address}}</td>
+<td>{{stop.name}}</td>
+<td>{{stop.start}}</td>
+<td>{{stop.finish}}</td>
+
+<!-- da sistemare -->
+
+<form #f="ngForm">
+  <td>
+    <select name="select" (change)="detectChange(f)" ngModel="select">
+      <option value="15">15 min</option>
+      <option value="30">30 min</option>
+      <option value="45">45 min</option>
+      <option value="60">1 h</option>
+      <option value="75">1 h 15 min</option>
+      <option value="90">1 h 30 min</option>
+      <option value="105">1 h 45 min</option>
+      <option value="120">2 h</option>
+    </select>
+  </td>
+
+
+  <td>
+    <p class="newprice" ngForm="price"> {{price}} &euro;</p>
+  </td>
+
+  <td align="center">
+    <button (click)="prolungaSosta(f)">Prolunga</button>
+  </td>
+</form>

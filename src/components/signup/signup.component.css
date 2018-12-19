@@ -1,0 +1,34 @@
+input{
+    border-radius: 15px;
+    width: 100%;
+    height: 50px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1{
+    text-align: center;
+    padding-top: 10%;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+button{
+    margin:0 auto;
+    display: block;
+    background-color: #a8d342;
+    width: 30%;
+    height: 50px;
+    border-radius: 15px;
+    color: #414a52;
+    border-color: #a7d34200;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background-image: url("/assets/img/sfondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}

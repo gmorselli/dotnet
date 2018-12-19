@@ -1,0 +1,47 @@
+<body>
+
+
+    <div class="row" id="blank">
+        <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-2"></div>
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-8">
+
+  <div>
+    <h1>Lista segnalazioni</h1>
+    <table class = "table table-striped table-success table-sm">
+ 
+        <thead class="thead-dark">
+   
+        <th>TIPO SEGNALAZIONE</th>
+        <th>SEGNALAZIONE</th>
+        <th>DATA</th>
+        <th>UTENTE</th>
+
+        <th>FOTO</th>
+
+      </thead>
+
+      <!-- [user-data] = "user"  -->
+      <tr *ngFor="let report of reports">
+
+        <td>
+          <!-- <p>{{ map.get(mapEntry[0]) }}</p> -->
+          <p>{{ map.get("" + report.type) }}</p>
+        </td>
+        <td>{{report.description}}</td>
+        <td>{{report.time}}</td>
+        <td>{{report.username}}</td>
+        <td><img [src]="report.media"></td>  
+        <!-- <img [src]="data:image/png;base64, report.media"> -->
+
+      </tr>
+    </table>
+
+  </div>
+  <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-2"></div>
+  </div>
+
+
+  </div>
+
+</body>
+

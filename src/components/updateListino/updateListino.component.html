@@ -1,0 +1,48 @@
+<body>
+    <div class="deleteCustomer">
+		<img src="https://image.flaticon.com/icons/png/512/1155/1155556.png"
+			class="imgSuperUser">
+		<h1>Modifica il tuo listino</h1>
+    </div>
+    <div>
+    	<div class="thingDiv" style="margin-top: -3%">
+			<table class="readCustomer">
+			<tr>
+				<th>id</th>
+				<th>nome listino</th>
+				<th>anno</th>
+			</tr>
+            	<tr *ngFor= "let lista of listino">
+				<td>{{lista.id}}</td>
+				<td>{{lista.nomeListino}}</td>
+				<td>{{lista.anno}}</td>
+			</tr>
+            </table>     
+    </div>   
+                   
+                <div class="updateThing">
+                    <form #f=ngForm >
+                        <table>
+                            <tr>
+                                <td><h2>Id Listino:</h2></td>
+                                <td><select name="idselected" ngModel="idselected">
+                                        <option *ngFor="let lista of listino" [attr.value]="lista.id">{{lista.id}}</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <td><h2>Inserire nome listino:</h2></td>
+                                <td><input type="text" name="newNomeListino"
+                                    placeholder="inserire nome listino" ngModel></td>
+                            </tr>
+                            <tr>
+                                <td><h2>Inserire anno:</h2></td>
+                                <td><input type="text" name="newAnno"
+                                    placeholder="inserire anno" ngModel></td>
+                            </tr>
+                                
+                        </table>
+                        <button class="deleteButton" type="submit" (click)="update(f)">Modifica</button>
+                    </form>
+                </div>
+            </div>
+             </body>

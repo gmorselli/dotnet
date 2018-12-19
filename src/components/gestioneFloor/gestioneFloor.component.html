@@ -1,0 +1,36 @@
+<body>
+	<h1>Building Menu</h1>
+
+	<h2 class="things">Floor del building con id {{buildingId}} </h2>
+	<div class="thingDiv">
+	<table class="thingTable table" style="margin-top:1%;">
+	<tr><th>Id: </th>
+	<th>Nome: </th>
+	<th>Descrizione: </th>
+	<tr *ngFor="let floor of floors" (click) = 'toRoomMenu(floor.id)'>
+	<td>{{floor.id}}</td>
+	<td>{{floor.nomeFloor}}</td>
+	<td>{{floor.descrizione}}</td>
+	</tr>
+	</table>
+	
+		<div>
+			<div class="insertDiv" (click) = 'toInsertFloor(buildingId)'>
+				<img
+					src="https://png2.kisspng.com/20180509/che/kisspng-computer-icons-building-cube-clip-art-5af29b46688608.6583202015258489024281.png"
+					class="imgThing"> <div class="customerLink" >Inserisci Floor</div>
+			</div>
+		<div class="insertDiv" (click) = 'toUpdateFloor(buildingId)'>
+				<img
+					src="https://png2.kisspng.com/20180509/che/kisspng-computer-icons-building-cube-clip-art-5af29b46688608.6583202015258489024281.png"
+					class="imgThing"> <div class="customerLink"> Modifica Floor </div>
+			</div>
+			<div class="insertDiv" (click) = 'toDeleteFloor(buildingId)'>
+				<img
+					src="https://png2.kisspng.com/20180509/che/kisspng-computer-icons-building-cube-clip-art-5af29b46688608.6583202015258489024281.png"
+					class="imgThing"> <div class="customerLink">Elimina Floor </div>
+			</div>
+		</div>
+	</div>
+
+</body>

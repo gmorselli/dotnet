@@ -1,0 +1,8 @@
+<body>
+        <h1>Crea un nuovo floor per il building {{buildingId}}</h1>
+        <form  #f="ngForm">
+            <h3>Inserire nome floor: <input type="text" name="nomeFloor" placeholder="inserire nome floor" ngModel></h3>
+            <h3>Inserire descrizione: <input type="text" name="descrizione" placeholder="inserire descrizione" ngModel></h3>
+            <button type ="submit" (click) = 'register(f,buildingId)'>Crea</button><br>
+        </form>
+</body>

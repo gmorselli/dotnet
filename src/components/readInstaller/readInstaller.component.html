@@ -1,0 +1,27 @@
+<body>
+	<div class="readCustomer">
+		<img src="https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/user.png"
+			class="imgSuperUser">
+	<h1>Installers</h1>
+	</div>
+	<div class="readTable">
+		<table class="table">
+				<thead>
+					<tr>
+							<th>Nome</th>
+							<th>Cognome</th>
+							<th>Username</th>
+							<th>Password</th>
+					</tr>
+				</thead>
+				<tbody>
+						<tr *ngFor="let installer of installers">
+							<td >{{installer.nome}}</td>
+							<td >{{installer.cognome}}</td>
+							<td >{{installer.username}}</td>
+							<td >{{installer.password}}</td>
+						</tr>
+				</tbody>
+		</table>
+        </div>
+        </body>

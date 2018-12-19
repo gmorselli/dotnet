@@ -1,0 +1,34 @@
+<h1>Room Menu</h1>
+    <h2>Qui puoi personalizzare la tua room inserendo degli item scegliendoli dal nosto catalogo</h2><br>
+    <h2>Item Disponibili </h2><br>
+    <table class="thingTable table" style="margin-top:-1%;" >
+        <tr><th>Id: </th>
+        <th>Categoria: </th>
+        <th>Descrizione: </th>
+        <th>Marca: </th>
+        <th>Modello: </th>
+        <tr *ngFor="let itemtype of available " (click) = "add(itemtype)">
+            <td>{{itemtype.id}}</td>
+            <td>{{itemtype.categoria}}</td>
+            <td>{{itemtype.descrizione}}</td>
+            <td>{{itemtype.marca}}</td>
+            <td>{{itemtype.modello}}</td>
+        </tr>
+    </table>
+    <h2>I tuoi item</h2><br>
+    <table class="thingTable table" style="margin-top:-0.1%;">
+        <tr><th>Id tipologia: </th>
+        <th>Categoria: </th>
+        <th>Descrizione: </th>
+        <th>Marca: </th>
+        <th>Modello: </th>
+        <tr *ngFor="let item of myItems" (click) = "remove(item)" >
+                <td>{{item.id}}</td>
+                <td>{{item.itemType.categoria}}</td>
+                <td>{{item.itemType.descrizione}}</td>
+                <td>{{item.itemType.marca}}</td>
+                <td>{{item.itemType.modello}}</td>
+        </tr>
+    </table>
+    <button class="thingTable" type ="submit" (click) = "saveChanges()">Salva</button><br>
+

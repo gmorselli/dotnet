@@ -1,0 +1,50 @@
+<div class="row" id="blank">
+  <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-5">
+
+    <button id="refresh" (click)="updateSlots()">Aggiorna</button>
+  </div>
+  <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-5"></div>
+  <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-2"></div>
+</div>
+
+<div class="row" id="blank">
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-5">
+
+<agm-map style="width:400px; height:400px" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [streetViewControl]="false" (mapReady)="mapReady($event)"
+  id="map"></agm-map>
+</div>
+
+<div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-5">
+
+
+  <h1>Auto in sosta</h1>
+  <br>
+  <table>
+    <thead>
+      <tr>
+
+        <!-- <th>ID STOP</th> -->
+        <!--  <th>TIPO DISABILE</th>  -->
+        <th>TARGA</th>
+        <th>START</th>
+        <th>FINISH</th>
+        <!--  <th>PAGATO</th> -->
+      </tr>
+    </thead>
+    <tbody id="stopList" *ngIf="isSlotSelected">
+      <tr *ngFor="let stop of CurrentManagementCarplace.stop_list">
+        <td>{{stop.license_plate}}</td>
+        <td>{{stop.start}}</td>
+        <td>{{stop.finish}}</td>
+        <!--da rivedere expired-->
+        <!-- <td>{{stop.expired}}</td> -->
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+<div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-2"></div>
+
+</div>

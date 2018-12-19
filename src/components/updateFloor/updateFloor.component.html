@@ -1,0 +1,24 @@
+<body>
+        <h1>Questa pagina ti permette di modificare un floor</h1>
+        <h2>Questi sono i floor relativi al building {{buildingId}}</h2>
+        <table>
+            <tr><th>Id: </th>
+                <th>Nome: </th>
+                <th>Descrizione: </th>
+            </tr>
+            <tr *ngFor="let floor of floors">
+                <td>{{floor.id}}</td>
+                <td>{{floor.nomeFloor}}</td>
+                <td>{{floor.descrizione}}</td>
+            </tr>
+        </table>
+        <h2>Quale floor vuoi modificare?</h2>
+        <form #f="ngForm">
+            <select id="id" name="id" ngModel="floor.id">
+                <option *ngFor="let floor of floors" [attr.value]="floor.id" >{{floor.id}}</option>
+            </select>
+            <h3>Inserire nome floor: <input type="text" name="nomeFloor" placeholder="inserire nome floor" ngModel></h3>
+            <h3>Inserire descrizione: <input type="text" name="descrizione" placeholder="inserire descrizione" ngModel></h3>
+            <button type ="submit" (click) = "update(f)">Modifica</button><br>
+        </form>
+    </body>

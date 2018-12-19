@@ -1,0 +1,34 @@
+<body>
+        <div class="readCustomer">
+                <img src="http://icongal.com/gallery/image/43791/edit_notes_delete.png"
+                    class="itemSizeImg">
+            <h1>Modifica Items</h1>
+            
+            </div>	
+                <form class="itemForm" #f="ngForm">
+                <table>
+                <tr>
+                    <td> <h2>Id: </h2></td>
+                    <td> <input type = "text" name = "itemTypeId" id="itemTypeId" placeholder="Inserisci id" ngModel> </td>				
+                </tr>
+                <tr>
+                    <td> <h2>Marca: </h2></td>
+                    <td> <input type = "text" name = "marca" id="marca" placeholder="Inserisci marca" ngModel> </td>				
+                </tr>
+                <tr>
+                    <td> <h2>Modello: </h2></td>
+                    <td> <input type = "text" name = "modello" id="modello" placeholder="Inserisci modello" ngModel> </td>				
+                </tr>
+                <tr>
+                    <td> <h2>Categoria: </h2></td>
+                    <td> <input type = "text" name = "categoria" id="categoria"  placeholder="Inserisci categoria" ngModel> </td>				
+                </tr>
+                <tr>
+                    <td> <h2>Descrizione: </h2></td>
+                    <td>  <textarea class="textFont" rows="4" cols="50" name="descrizione" id="descrizione" placeholder="Inserisci descrizione" ngModel></textarea> </td>				
+                </tr>
+                </table>
+                     <p><button class = "censisciButton" type = "submit" (click)="update(f)" >Modifica</button></p>
+                </form>
+            
+        </body>

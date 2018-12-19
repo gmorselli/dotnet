@@ -1,0 +1,62 @@
+<body>
+
+	<div class="deleteCustomer">
+		<img src="https://image.flaticon.com/icons/png/512/1155/1155556.png"
+			class="imgSuperUser">
+		<h1>Modifica il tuo building</h1>
+	</div>
+	<div>
+		<div class="thingDiv" style="margin-top: -3%">
+			<table>
+			<tr>
+				<th>id</th>
+				<th>indirizzo</th>
+				<th>citta</th>
+				<th>cap</th>
+				<th>interno</th>
+			</tr>
+            	<tr *ngFor= "let building of buildings">
+				<td>{{building.id}}</td>
+				<td>{{building.address}}</td>
+				<td>{{building.city}}</td>
+				<td>{{building.cap}}</td>
+				<td>{{building.interno}}</td>
+			</tr>
+			</table>
+			<div class="updateThing">
+				<form #f=ngForm >
+					<table>
+						<tr>
+							<td><h2>Id Building:</h2></td>
+							<td><select name="idselected" ngModel="idselected">
+									<option *ngFor="let building of buildings" [attr.value]="building.id">{{building.id}}</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td><h2>Inserire indirizzo building:</h2></td>
+							<td><input type="text" name="newindirizzo"
+								placeholder="inserire indirizzo building" ngModel></td>
+						</tr>
+						<tr>
+							<td><h2>Inserire interno building:</h2></td>
+							<td><input type="text" name="newinterno"
+								placeholder="inserire interno" ngModel></td>
+						</tr>
+						<tr>
+							<td><h2>Inserire citta building:</h2></td>
+							<td><input type="text" name="newcitta"
+								placeholder="inserire citta" ngModel></td>
+						</tr>
+						<tr>
+							<td><h2>Inserire cap building:</h2></td>
+							<td><input type="text" name="newcap"
+								placeholder="inserire cap" ngModel></td>
+						</tr>
+
+					</table>
+					<button class="deleteButton" type="submit" (click)="update(f)">Modifica</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>

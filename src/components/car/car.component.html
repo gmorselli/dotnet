@@ -1,0 +1,43 @@
+<body>
+
+
+<div class="row" id="blank">
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
+    <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+<h1>Lista auto</h1>
+<br>
+<div *ngIf="carsList" class="table-responsive">
+    <table class = "table table-striped table-success table-sm">
+        <thead class="thead-dark">
+
+
+            <tr>
+                <th>Targa</th>
+                <th>Nome</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tr *ngFor="let car of carsList">
+            <td>{{car.license_plate}}</td>
+            <td>{{car.name}}</td>
+            <td>
+                <input type="submit" class = "btn btn-danger" (click)="deleteCar([car.id])" value="Delete">
+            </td>
+        </tr>
+
+
+
+    </table>
+
+    <a href="/#/addCar">Aggiungi auto</a>
+</div>
+
+<p>{{result}}</p>
+</div>
+<div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
+</div>
+
+
+
+</body>

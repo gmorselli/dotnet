@@ -1,0 +1,26 @@
+<body>
+        <div class="readCustomer">
+                <img src="https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/user.png"
+                    class="imgSuperUser">
+            <h1>Catalogo itemType</h1>
+            </div>
+            <div class="readTable">
+                <table class="table">
+                        <thead>
+             <tr>
+                                <th>Categoria </th>
+                                <th>Descrizione </th>
+                                <th>Marca </th>
+                                <th>Modello</th></tr>
+                    </thead>
+          
+                        <tr *ngFor="let itemType of itemTypeList">
+                        <td>{{itemType.categoria}}</td>
+                        <td>{{itemType.descrizione}}</td>
+                        <td>{{itemType.marca}}</td>
+                        <td>{{itemType.modello}}</td>
+                        <td></td>
+                    </tr>
+                </table>
+                </div>
+            </body>           

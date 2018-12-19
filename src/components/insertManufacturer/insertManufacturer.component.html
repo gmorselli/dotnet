@@ -1,0 +1,29 @@
+<body>
+	<div class="select insertCustomer">
+            <img
+                src="https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/add-user.png"
+                class="imgSuperUser">
+            <h1 >Inserisci il Manufacturer</h1>
+        </div>
+    <div class="login-form">
+            <form class="userForm" #f="ngForm">
+            <table class="insertTable">
+                <tr>
+                    <td><h2>Nome:</h2></td>
+                    <td><input type="text" class="form-control" id="nome"
+                        name="nome" placeholder="Inserisci Nome" ngModel></td>
+                </tr>
+                <tr>
+                    <td><h2>Email:</h2></td>
+                    <td><input type="text" class="form-control" id="email" name="email"
+                        placeholder="Inserisci Email" ngModel></td>
+                </tr>
+             
+            </table>
+            <button class="registerButton" type="submit" (click)="register(f)">Inserisci</button>
+    
+        </form>
+        
+</div>
+    </body>
+    

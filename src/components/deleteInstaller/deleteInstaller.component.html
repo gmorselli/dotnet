@@ -1,0 +1,23 @@
+<body>
+	<div class="deleteCustomer">
+		<img
+			src="https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/delete-user.png"
+			class="imgSuperUser">
+		<h1>Elimina Installer</h1>
+	</div>
+<div class="delete">
+	<h2>Seleziona l'id dell'installer da eliminare</h2>
+	<form #f="ngForm">
+		<div  class="idCustomer"><h2>
+			Id Installer: </h2>
+			<div >
+                <select name="username" ngModel="username">
+                    <option *ngFor="let customer of installers" [attr.value]="customer.username">{{customer.username}}</option>
+              </select>
+			</div>
+		</div>
+
+		<button class="deleteButton" type="submit" (click)="delete(f)">Elimina</button>
+	</form>
+	</div>
+</body>

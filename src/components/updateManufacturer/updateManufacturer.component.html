@@ -1,0 +1,33 @@
+<body>
+    <div class="readCustomer">
+        <img src="https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/edit-user.png"
+            class="imgSuperUser">
+            <h1>Modifica Manufacturer</h1>
+    </div>
+    
+    
+    
+    <div class="modifyCustomer">
+    <h2 >Seleziona l'username del manufacturer da modificare</h2>
+    <form class="userForm" #f="ngForm">
+        <div class="idCustomer"><h3>Username Manufacturer:</h3>
+            <div style="padding-left:2%">
+                <select class="select" name="usernameSelected" ngModel="usernameSelected">
+                  <option *ngFor="let manufacturer of manufacturers" [attr.value]="manufacturer.username">{{manufacturer.username}}</option>
+            </select>
+            </div>
+            
+        </div>
+        <div class="idCustomer"><h3>Cosa vuoi modificare?   </h3>&nbsp; 
+            <select class="select" name="fieldSelected" ngModel="fieldSelected">
+                  <option value="1">Nome</option>
+                  <option value="2">Email</option>
+            </select>
+            &nbsp;&nbsp;
+            <input type = "text" id = "value" name ="value" placeholder="Inserisci nuovo valore" ngModel>
+        </div>
+        <button class="modifyButton" style="border-radius: 10%" type = "submit"(click)="update(f)"> Modifica</button>
+        
+    </form>
+    </div>
+    </body>

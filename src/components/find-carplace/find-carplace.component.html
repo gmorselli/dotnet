@@ -1,0 +1,69 @@
+<div class="row" id="blank">
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-5">
+
+        <input id="autocomplete" type="text" placeholder="Inserisci destinazione" #search>
+
+        <button id="myposition" (click)="getPosition()" #myposition>Posizione</button>
+
+        <br>
+        <br>
+
+        <select id="carSelect" (change)="changeCar()" #carSelect>
+            <option value="">Seleziona auto</option>
+            <option *ngFor="let car of carsList" [attr.value]="car.id">{{car.name}}</option>
+        </select>
+
+        <br>
+
+        <div style="float: left;">
+            <!-- <button id="startsearch">Cerca</button> -->
+
+            <button id="seleziona" #seleziona disabled>Parti</button>
+
+            <button id="cambia" #cambia disabled>Cambia parcheggio</button>
+        </div>
+
+    </div>
+    <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-5"></div>
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-2"></div>
+
+</div>
+
+<div class="row" id="blank">
+        <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-5">
+
+            <agm-map style="width:400px; height:400px" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [streetViewControl]="false" (mapReady)="mapReady($event)"
+                id="map"></agm-map>
+        </div>
+
+
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-5">
+            <h3>Inserisci la durata della sosta</h3>
+
+            <p id='slot'>{{slotAddress}}</p>
+            <select id='select' name='minute' #select disabled>
+                <option value='' hidden>Seleziona minuti</option>
+                <option value='15'>15 min</option>
+                <option value='30'>30 min</option>
+                <option value='45'>45 min</option>
+                <option value='60'>1 h</option>
+                <option value='75'>1 h 15 min</option>
+                <option value='90'>1 h 30 min</option>
+                <option value='105'>1 h 45 min</option>
+                <option value='120'>2 h</option>
+            </select>
+            <br>
+            <p id='newprice'>{{newPrice}}</p>
+
+            <button id="payandgo" #payandgo disabled>Paga e inizia</button>
+        </div>
+
+        <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-2"></div>
+
+    </div>
+
+
+
+
+
+

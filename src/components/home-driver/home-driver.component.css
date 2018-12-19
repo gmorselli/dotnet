@@ -1,0 +1,19 @@
+#nav{
+    width: 100%;
+}
+
+.nav{
+    height: 50px;
+    opacity: 20%;
+}
+
+a{
+    font-family: myFirstFont;
+    font-size: 20px;
+    color: #a8d342 !important;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url("/assets/OldSansBlack.ttf");
+}

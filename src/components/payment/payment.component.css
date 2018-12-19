@@ -1,0 +1,19 @@
+h1, h4{
+    text-align: center;
+    padding-top: 10%;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.table td, tr {
+    text-align: center; }
+
+p {
+    color: black;
+}
+
+button {
+    margin-left: 2%;
+    
+}

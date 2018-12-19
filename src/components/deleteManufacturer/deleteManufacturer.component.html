@@ -1,0 +1,25 @@
+<body>
+	<div class="deleteCustomer">
+		<img
+			src="https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/delete-user.png"
+			class="imgSuperUser">
+		<h1>Elimina Manufacturer</h1>
+    </div>
+<div class="delete">
+	<h2>Seleziona l'id del customer da eliminare</h2>
+	<form class="userForm" #f="ngForm">
+		<div  class="idCustomer"><h2>
+			Username Manufacturer: </h2>
+            <div >
+                <select class="select" name="usernameSelected" ngModel="usernameSelected">
+                    <option *ngFor="let manufacturer of manufacturers" [attr.value]="manufacturer.username">{{manufacturer.username}}</option>
+              </select>
+			</div>
+		</div>
+
+      
+        <button class="deleteButton" style="border-radius: 10%" type = "submit"(click)="delete(f)"> Elimina</button>
+    
+	</form>
+	</div>
+</body>

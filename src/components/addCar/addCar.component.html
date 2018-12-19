@@ -1,0 +1,26 @@
+<body>
+
+
+        <div class="row" id="blank">
+            <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
+            <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+
+<h1>Aggiungi auto</h1>
+
+        <form class="userForm" #f="ngForm">
+
+            <p>Targa:<input type="text" name="licensePlate" class="form-control form-control-lg" ngModel/></p>
+            <p>Nome:<input type="text" name="name" class="form-control form-control-lg" ngModel/></p>
+            
+
+            <button (click)="addNewCar(f)">Aggiungi</button>
+        </form>
+
+        <br><br>
+    </div>
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
+    </div>
+  
+
+        
+</body>

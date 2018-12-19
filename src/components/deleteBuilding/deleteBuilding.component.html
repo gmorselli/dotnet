@@ -1,0 +1,42 @@
+<body>
+
+        <div class="deleteCustomer">
+            <img src="http://icons-for-free.com/free-icons/png/512/905647.png"
+                class="imgThing">
+            <h1>Elimina Building</h1>
+        </div>
+        <div>
+            <div class="thingDiv" style="margin-top: 5%">
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>indirizzo</th>
+                    <th>citta</th>
+                    <th>cap</th>
+                    <th>interno</th>
+                </tr>
+                <tr *ngFor= "let building of buildings">
+                    <td>{{building.id}}</td>
+                    <td>{{building.address}}</td>
+                    <td>{{building.city}}</td>
+                    <td>{{building.cap}}</td>
+                    <td>{{building.interno}}</td>
+                </tr>
+            </table>
+                <div class="deleteBuilding" style="margin-top: -6%">
+                    <form #f="ngForm">
+                        <table>
+                            <tr>
+                                <td><h2 style="display:block">Id Building:</h2></td>
+                                <td><select name="idSelected"  ngModel="idSelected">
+                                            <option *ngFor= "let building of buildings" [attr.name]="buildingId">{{building.id}}</option>
+                                </select></td>
+                            </tr>
+                        </table>
+                        <button class="deleteButton" type="submit" (click)="delete(f)">Elimina</button>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>

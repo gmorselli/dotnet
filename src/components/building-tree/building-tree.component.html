@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-8">
+    <p-tree 
+      [value]="tree" 
+      layout="horizontal" 
+      selectionMode="single" 
+      pDraggable="dd"
+      (onNodeSelect)="nodeSelect($event)"
+      [(selection)]="selectedFile3">
+    </p-tree>
+  </div>
+  <div class="col-xs-2 col-md-offset-2">
+    <div id="{{thing.data}}" class="col-xs-4" pDroppable="dd" *ngFor="let thing of things" (onDrop)="drop($event, thing[0].data)" >
+        <p-tree 
+          id="{{thing[0].data}}"
+          [value]=thing
+          layout="horizontal" 
+          selectionMode="single"
+        >
+      </p-tree>
+    </div>
+  </div>
+  <div class="col-xs-1 float-right">
+    <p>
+      <button [disabled]="saveButtonDisabled" class="btn btn-success" (click)="save()">Save</button>
+    </p>
+  </div>
+</div>
+

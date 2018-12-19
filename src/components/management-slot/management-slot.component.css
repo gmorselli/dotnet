@@ -1,0 +1,25 @@
+#slots,#masters,#slaves{
+    width:inherit;
+    float: left;
+    display: block;
+}
+
+.col-md-4{
+    padding:0px;
+}
+
+.row{
+    margin:0px;
+}
+
+#slotsValues input{
+    display: block;
+}
+
+#mastersValues input{
+    display: block;
+}
+
+#slavesValues input{
+    display: block;
+}

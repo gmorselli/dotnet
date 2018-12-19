@@ -1,0 +1,54 @@
+<body>
+<div class="row">
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
+    <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+        <h1>Registrati</h1>
+        <form class="userForm" #f="ngForm">
+        
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" id="username" placeholder=" Username" ngModel required autofocus>
+            </div>
+        
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" id="inputPassword" placeholder=" Password" ngModel required autofocus>
+            </div>
+        
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" id="name" placeholder=" Name" ngModel>
+            </div>
+        
+            <div class="form-group">
+                <input type="text" class="form-control" name="surname" id="surname" placeholder=" Surname" ngModel>
+            </div>
+        
+            <!-- <div class="form-group">
+                <input type="text" name="address" id="birthdate" placeholder="address" ngModel>
+                <br>
+            </div>
+        
+            <div class="form-group">
+                <input type="text" name="cap" id="cap" placeholder="cap" ngModel>
+                <br>
+            </div> -->
+        
+            <div class="form-group">
+                <input type="text" class="form-control" name="phone" id="phone" placeholder=" Phone" ngModel required autofocus>
+            </div>
+        
+            <div class="form-group">
+                <input type="text" class="form-control" name="email" id="email" placeholder=" Email" ngModel required autofocus>
+            </div>
+        
+            <!-- <div class="form-group">
+                <input type="text" name="handicapped" id="handicapped" placeholder="handicapped" ngModel>
+            </div> -->
+        
+        
+            <div class="form-group">
+                <button (click)="signup(f)">Registrati</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-1 col-sm-2 col-md-3 col-lg-4 col-xl-4"></div>
+  </div>
+</body>

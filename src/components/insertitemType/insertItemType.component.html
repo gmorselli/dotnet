@@ -1,0 +1,34 @@
+<body>
+<div class="readCustomer">
+        <img src="http://www.aa24.it/wp-content/uploads/2015/03/1426101814_add-notes.png"
+			class="imgSuperUser">
+        <h1>Inserisci l'itemType del catalogo</h1>
+    </div>
+
+        <form class="itemForm" #f="ngForm">
+        <table >
+            <tr>
+                <td><h2>Marca:</h2></td>
+                <td><input type="text" class="form-control" id="marca"
+                    name="marca" placeholder="Inserisci marca" ngModel></td>
+            </tr>
+            <tr>
+                <td><h2>Modello:</h2></td>
+                <td><input type="text" class="form-control" id="modello" name="modello"
+                    placeholder="Inserisci modello" ngModel></td>
+            </tr>
+            <tr>
+                <td><h2>Categoria:</h2></td>
+                <td><input type="text" class="form-control" id="categoria" name="categoria"
+                    placeholder="Inserisci categoria" ngModel></td>
+            </tr>
+            <tr>
+                <td><h2>Descrizione:</h2></td>
+                <td><textarea class="textFont" rows="4" cols="50" id="descrizione" name="descrizione"
+                    placeholder="Inserisci descrizione" ngModel> </textarea></td>
+            </tr>
+        </table>
+        <button class="censisciButton" type="submit" (click)="insert(f)">Censisci</button>
+
+    </form>
+</body>

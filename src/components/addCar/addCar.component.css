@@ -1,0 +1,28 @@
+h1{
+    text-align: center;
+    padding-top: 10%;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.table td, tr {
+    text-align: center;
+}
+
+p{
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button{
+    margin:0 auto;
+    display: block;
+    background-color: #a8d342;
+    width: 30%;
+    height: 50px;
+    border-radius: 15px;
+    color: #414a52;
+    border-color: #a7d34200;
+    font-family: 'Open Sans', sans-serif;
+}

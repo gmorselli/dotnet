@@ -1,0 +1,30 @@
+a {
+	color:black;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    background-color:black;
+}
+
+a:visited
+{
+    text-decoration: underline;  
+    text-decoration-color: purple;
+    color: purple;
+}
+
+h1{
+    text-align: center;
+    padding-top: 10%;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+.table td, tr {
+    text-align: center;
+}

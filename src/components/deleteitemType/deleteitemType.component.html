@@ -1,0 +1,20 @@
+<body>
+        <div class="readCustomer">
+            <img
+                src="https://www.shareicon.net/data/512x512/2015/05/10/36482_delete_512x512.png"
+                class="imgSuperUser">
+            <h1>Elimina Item</h1>
+        </div>
+        <div class="itemForm">
+            <form class="userForm" #f="ngForm">
+                <table>
+                    <tr>
+                        <td><h2>Id dell'item da eliminare dal catalogo</h2></td>
+                        <br>
+                        <td><input type="text" name="itemTypeId" id="itemTypeId" placeholder="id" ngModel></td>
+                    </tr>
+                </table>
+                <button class="censisciButton" type="submit"(click)="delete(f)">Elimina</button>
+            </form>
+        </div>
+    </body>

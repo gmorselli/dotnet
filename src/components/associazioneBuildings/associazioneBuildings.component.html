@@ -1,0 +1,20 @@
+<body>
+    <div class="idCustomer"><h3>Associazione Buildings</h3>
+        </div>
+    <form #f="ngForm">
+        <div class="idCustomer"><h3>Installatore:</h3>
+
+            <div style="padding-left:2%">
+                <select name="installerSelected" ngModel="installerSelected">
+                  <option *ngFor="let customer of installers" [attr.value]="customer.username">{{customer.username}}</option>
+            </select>
+            </div>
+            <div style="padding-left:2%">
+                <select name="buildingSelected" ngModel="buildingSelected">
+                  <option *ngFor="let building of buildings" [attr.value]="building.id">{{building.id}}</option>
+            </select>
+            </div>
+            </div>
+        <button class="censisciButton" type="submit" (click)="associa(f)"> Associa </button>
+        </form>
+    </body>

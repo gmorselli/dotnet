@@ -1,0 +1,24 @@
+<body>
+	<div class="readCustomer">
+		<img src="https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/user.png"
+			class="imgSuperUser">
+	<h1>Manufacturers</h1>
+	</div>
+	<div class="readTable">
+		<table class="table">
+				<thead>
+					<tr>
+							<th>Nome</th>
+                            <th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let manufacturer of manufacturers">			
+							<td >{{manufacturer.nome}}</td>
+                            <td>{{manufacturer.email}}</td>
+						</tr>
+				</tbody>
+		</table>
+		</div>
+		
+</body>

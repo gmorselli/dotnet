@@ -1,0 +1,113 @@
+<div id="head" class="row">
+
+  <form class="col-md-4">
+    <select size="10" id="slots">
+      <option *ngFor="let slot of slots" (click)="selectSlot(slot)">{{slot.address}}</option>
+      <option (click)="newSlot()"> + </option>
+    </select>
+  </form>
+
+  <form class="col-md-4">
+    <!-- && slots.length == 0 -->
+    <select size="10" id="masters">
+      <option *ngFor="let master of masters" (click)="selectMaster(master)">{{master.id}}</option>
+      <option (click)="newMaster()" [attr.disabled]="selectedSlot != null ? null : '' "> + </option>
+    </select>
+  </form>
+
+  <form class="col-md-4">
+    <select size="10" id="slaves">
+      <option *ngFor="let slave of slaves" (click)="selectSlave(slave)">{{slave.id}}</option>
+      <option (click)="newSlave()" [attr.disabled]="selectedMaster != null ? null : '' "> + </option>
+    </select>
+  </form>
+
+</div>
+
+<div id="foot" class="row">
+
+  <div *ngIf="typeTable == 0" id="slotsValues">
+    <div *ngIf="exists">
+      <form #slotsFormUpdate="ngForm">
+        <label for="latitude">Latitude</label>
+        <input id="latitude" name="latitude" type="number" step="0.0000001" [(ngModel)]="dummyCopySlot.latitude">
+
+        <label for="longitude">Longitude</label>
+        <input id="longitude" name="longitude" type="number" step="0.0000001" [(ngModel)]="dummyCopySlot.longitude">
+
+        <label for="address">Address</label>
+        <input id="address" name="address" type="text" [(ngModel)]="dummyCopySlot.address">
+
+        <label for="price">Price</label>
+        <input id="price" name="price" type="number" [(ngModel)]="dummyCopySlot.price">
+
+        <label for="type">Type</label>
+        <input id="type" name="type" type="number" [(ngModel)]="dummyCopySlot.type">
+
+        <button id="deleteSlot" (click)="deleteSlot()">DELETE</button>
+        <button id="updateSlot" (click)="updateSlot(slotsFormUpdate)">UPDATE</button>
+      </form>
+    </div>
+    <div *ngIf="!exists">
+      <form #slotsFormAdd="ngForm">
+        <label for="latitude">Latitude</label>
+        <input id="latitude" name="latitude" type="number" step="0.0000001" [(ngModel)]="dummyCopySlot.latitude">
+
+        <label for="longitude">Longitude</label>
+        <input id="longitude" name="longitude" type="number" step="0.0000001" [(ngModel)]="dummyCopySlot.longitude">
+
+        <label for="address">Address</label>
+        <input id="address" name="address" type="text" [(ngModel)]="dummyCopySlot.address">
+
+        <label for="price">Price</label>
+        <input id="price" name="price" type="number" [(ngModel)]="dummyCopySlot.price">
+
+        <label for="type">Type</label>
+        <input id="type" name="type" type="number" [(ngModel)]="dummyCopySlot.type">
+
+        <button id="addSlot" (click)="addSlot(slotsFormAdd)">ADD</button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="typeTable == 1" id="mastersValues">
+    <div *ngIf="exists">
+      <form #mastersFormUpdate="ngForm">
+        <!-- <label for="idMaster">IdMaster</label>
+        <input id="idMaster" name="idMaster" type="text" [(ngModel)]="dummyCopyMaster.id"> -->
+
+        <button id="deleteMaster" (click)="deleteMaster()">DELETE</button>
+        <!-- <button id="updateMaster" (click)="updateMaster(mastersFormUpdate)">UPDATE</button> -->
+      </form>
+    </div>
+    <div *ngIf="!exists">
+      <form #mastersFormAdd="ngForm">
+        <label for="idMaster">IdMaster</label>
+        <input id="idMaster" name="idMaster" type="text" [(ngModel)]="dummyCopyMaster.id">
+
+        <button *ngIf="!exists" id="addMaster" (click)="addMaster(mastersFormAdd)">ADD</button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="typeTable == 2" id="slavesValues">
+    <div *ngIf="exists">
+      <form #slavesFormUpdate="ngForm">
+        <!-- <label for="idSlave">IdSlave</label>
+        <input id="idSlave" name="idSlave" type="text" [(ngModel)]="dummyCopySlave.id"> -->
+
+        <button id="deleteSlave" (click)="deleteSlave()">DELETE</button>
+        <!-- <button id="updateSlave" (click)="updateSlave(slavesFormUpdate)">UPDATE</button> -->
+      </form>
+    </div>
+    <div *ngIf="!exists">
+      <form #slavesFormAdd="ngForm">
+        <label for="idSlave">IdSlave</label>
+        <input id="idSlave" name="idSlave" type="text" [(ngModel)]="dummyCopySlave.id">
+
+        <button id="addSlave" (click)="addSlave(slavesFormAdd)">ADD</button>
+      </form>
+    </div>
+  </div>
+
+</div>

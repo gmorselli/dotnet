@@ -1,0 +1,36 @@
+<body>
+	<div class="deleteCustomer">
+		<img
+			src="https://cdn4.iconfinder.com/data/icons/symbol-color-business-1/32/office_building-add-512.png"
+			class="imgSuperUser">
+		<h1>Crea il tuo building</h1>
+	</div>
+	<div>
+		<form #f="ngForm">
+			<table class="insertTable">
+				<tr>
+					<td><h2>Indirizzo del building:</h2></td>
+					<td><input type="text" id="indirizzoBuilding" name="indirizzo"
+						placeholder="Inserisci indirizzo del building" ngModel></td>
+				</tr>
+				<tr>
+					<td><h2>Interno del building:</h2></td>
+					<td><input type="text" id="internoBuilding" name="interno"
+						placeholder="Inserisci interno del building" ngModel></td>
+				</tr>
+				<tr>
+					<td><h2>Citta' del building: </h2></td>
+					<td><input type="text" id="cittï¿½Building"
+					name="city" placeholder="Inserisci cittï¿½ del building" ngModel></td>
+				</tr>
+				<tr>
+					<td><h2>Cap del building: </h2></td>
+					<td>	<input type="text" id="capBuilding" name="cap"
+					placeholder="Inserisci cap del building" ngModel></td>
+				</tr>
+			</table>
+			<button class="censisciButton" type="submit" (click) = "register(f)">Crea</button>
+		</form>
+			
+	</div>
+</body>

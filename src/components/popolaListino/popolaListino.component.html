@@ -1,0 +1,68 @@
+
+<body>
+        <div class="readCustomer">
+                <h2>Qui puoi personalizzare il tuo listino inserendo degli item con un prezzo</h2>        </div>
+        <div class="readTable">
+        <form #f="ngForm">
+            <table class="table">
+                    <thead>
+                        <tr>
+                                        <td></td>
+                                <th>Id</th>
+                                <th>Nome listino</th>
+                                <th>Anno</th>
+                              <!--  <th>Id Manufacturer</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let lista of listino; let idx=index">			
+                                <td> <input type="radio" name="idListino" (input)="insertArray[0]=lista.id"></td>
+                                <td>{{lista.id}}</td>
+                                <td >{{lista.nomeListino}}</td>
+                                <td >{{lista.anno}}</td>
+                               <!--<td >{{lista.idManufacturer}}</td> --> 
+                        </tr>
+                    </tbody>
+                </table>
+                    <h2>Lista ItemType</h2>
+                <table class="thingTable table" style="margin-top:-1%;" >
+                        <tr>
+                        <th></th>
+                        <th>Id: </th>
+                        <th>Categoria: </th>
+                        <th>Descrizione: </th>
+                        <th>Marca: </th>
+                        <th>Modello: </th>
+                        </tr>
+                        <tr *ngFor="let itemtype of available " >
+                         <td><input type="radio" name="itemTypeId" (input)="insertArray[1]=itemtype.id"></td>
+                            <td>{{itemtype.id}}</td>
+                            <td>{{itemtype.categoria}}</td>
+                            <td>{{itemtype.descrizione}}</td>
+                            <td>{{itemtype.marca}}</td>
+                            <td>{{itemtype.modello}}</td>
+                        </tr>
+                    </table>
+                    <input type="text" id="prezzo" name="prezzo" [value]="insertArray[2]" (input)="insertArray[2]=$event.target.value"
+                        placeholder="Inserisci prezzo" ngModel>
+     
+                <button class="thingTable" type ="submit" (click) = "associa($event,insertArray[0],insertArray[1],insertArray[2])">Salva</button><br>
+        </form>       
+        </div>
+                <br>
+                <table class="thingTable table" style="margin-top:-1%;" >
+                                <tr><th>Id: </th>
+                                <th>prezzo: </th>
+                                <th>idItemType: </th>
+                                <th>idListino: </th>
+
+                                <tr *ngFor="let prezzo of prezzoAvaible ">
+                                                <td>{{prezzo.id}}</td>
+                                                <td>{{prezzo.prezzo}}</td>
+                                                <td>{{prezzo.idItemType}}</td>
+                                                <td>{{prezzo.idListino}}</td>
+                                                </tr>
+                                        </table>
+    </body>
+        
+      

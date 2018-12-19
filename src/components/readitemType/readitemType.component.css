@@ -1,0 +1,25 @@
+body {
+	margin: 0;
+	font: 10px normal Verdana, Arial, Helvetica, sans-serif;
+	background: #1d1d1d;
+	color: #fff;
+	background-image:url("http://www.ipvision.it/wp-content/uploads/2016/01/wallpaper-blu-scuro.jpg"); 
+	background-repeat:no-repeat;
+	background-position:center; 
+	padding:10px;
+}
+
+.readCustomer{
+	padding-left:37%; 
+	display: flex;
+	align-items: center;
+}
+
+.imgSuperUser{
+	width: 5%; 
+	padding-right:2%;
+}
+
+.readTable{
+	padding-left:2%;
+}

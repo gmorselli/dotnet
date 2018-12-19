@@ -1,0 +1,30 @@
+<body>
+	<div class="readCustomer">
+		<img src="https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/user.png"
+			class="imgSuperUser">
+	<h1>Customers</h1>
+	</div>
+	<div class="readTable">
+		<table class="table">
+				<thead>
+					<tr>
+							<th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Email</th>
+							<th>Username</th>
+							<th>Password</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let customer of customers">			
+							<td >{{customer.nome}}</td>
+                            <td >{{customer.cognome}}</td>
+                            <td>{{customer.email}}</td>
+							<td >{{customer.username}}</td>
+							<td>{{customer.password}}</td>
+						</tr>
+				</tbody>
+		</table>
+		</div>
+		
+</body>
