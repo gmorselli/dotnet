@@ -11,7 +11,7 @@ namespace AmebaDevice.DTO
         public int ID { get; set; }
         public String Nome { get; set; }
         public String Cognome { get; set; }
-        public String Username { get; set; }
+        public String username { get; set; }
         public String Password { get; set; }
         public String User_role { get; set; }
         public String Email { get; set; }
@@ -28,7 +28,7 @@ namespace AmebaDevice.DTO
             this.Nome = nome;
             this.Cognome = cognome;
             this.Email = email;
-            this.Username = username;
+            this.username = username;
             this.Password = password;
             this.User_role = userRole;
         }

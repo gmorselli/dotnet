@@ -10,7 +10,7 @@ namespace AmebaDevice
         public static void Register(HttpConfiguration config)
         {
             // Servizi e configurazione dell'API Web
-
+            config.EnableCors();
             // Route dell'API Web
             config.MapHttpAttributeRoutes();
 

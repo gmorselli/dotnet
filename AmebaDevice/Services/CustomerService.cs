@@ -74,5 +74,18 @@ namespace AmebaDevice.Services
             return CustomerConverter.convertToDto(customer);
         }
 
+        public CustomerDTO login(string username, string password)
+        {
+            Customer customer = modelloDatiDbContext.Customers.Where(c => c.Username == username && c.Password == password).FirstOrDefault();
+            CustomerDTO customerDTO = new CustomerDTO();
+            if (customer != null)
+            {
+                customerDTO = CustomerConverter.convertToDto(customer);
+                return customerDTO;
+            }
+            else
+                return null;
+        }
+
     }
 }

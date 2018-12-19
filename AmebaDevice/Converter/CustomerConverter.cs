@@ -16,7 +16,7 @@ namespace AmebaDevice.Converter
             customerDTO.Nome=c.Nome;
             customerDTO.Cognome=c.Cognome;
             customerDTO.Email=c.Email;
-            customerDTO.Username=c.Username;
+            customerDTO.username=c.Username;
             customerDTO.Password=c.Password;
             customerDTO.User_role=c.User_role;
             return customerDTO;
@@ -29,7 +29,7 @@ namespace AmebaDevice.Converter
             customer.Nome = c.Nome;
             customer.Cognome = c.Cognome;
             customer.Email = c.Email;
-            customer.Username = c.Username;
+            customer.Username = c.username;
             customer.Password = c.Password;
             customer.User_role = c.User_role;
             return customer;
