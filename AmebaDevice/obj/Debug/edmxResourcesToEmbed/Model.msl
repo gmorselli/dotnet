@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Customer)">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="User_role" ColumnName="User_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Building">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Building)">
+        <MappingFragment StoreEntitySet="Building">
+          <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+          <ScalarProperty Name="Indirizzo" ColumnName="Indirizzo" />
+          <ScalarProperty Name="Cap" ColumnName="Cap" />
+          <ScalarProperty Name="Citta" ColumnName="Citta" />
+          <ScalarProperty Name="Interno" ColumnName="Interno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Floor">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Floor)">
+        <MappingFragment StoreEntitySet="Floor">
+          <ScalarProperty Name="FloorID" ColumnName="FloorID" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Room">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Room)">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Thing">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Thing)">
+        <MappingFragment StoreEntitySet="Thing">
+          <ScalarProperty Name="ThingID" ColumnName="ThingID" />
+          <ScalarProperty Name="Num_Uscite" ColumnName="Num_Uscite" />
+          <ScalarProperty Name="Prezzo" ColumnName="Prezzo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemType">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ItemType)">
+        <MappingFragment StoreEntitySet="ItemType">
+          <ScalarProperty Name="ItemTypeID" ColumnName="ItemTypeID" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modello" ColumnName="Modello" />
+          <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Item">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Item)">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ConsumoEnergetico" ColumnName="ConsumoEnergetico" />
+          <ScalarProperty Name="Seriale" ColumnName="Seriale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CustomerBuilding" TypeName="Model.CustomerBuilding" StoreEntitySet="Building">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="Customer_CustomerID" />
+      </EndProperty>
+      <EndProperty Name="Building">
+        <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+      </EndProperty>
+      <Condition ColumnName="Customer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BuildingFloor" TypeName="Model.BuildingFloor" StoreEntitySet="Floor">
+      <EndProperty Name="Building">
+        <ScalarProperty Name="BuildingID" ColumnName="Building_BuildingID" />
+      </EndProperty>
+      <EndProperty Name="Floor">
+        <ScalarProperty Name="FloorID" ColumnName="FloorID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FloorRoom" TypeName="Model.FloorRoom" StoreEntitySet="Room">
+      <EndProperty Name="Floor">
+        <ScalarProperty Name="FloorID" ColumnName="Floor_FloorID" />
+      </EndProperty>
+      <EndProperty Name="Room">
+        <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerThing" TypeName="Model.CustomerThing" StoreEntitySet="Thing">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="Customer_CustomerID" />
+      </EndProperty>
+      <EndProperty Name="Thing">
+        <ScalarProperty Name="ThingID" ColumnName="ThingID" />
+      </EndProperty>
+      <Condition ColumnName="Customer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BuildingThing" TypeName="Model.BuildingThing" StoreEntitySet="Thing">
+      <EndProperty Name="Building">
+        <ScalarProperty Name="BuildingID" ColumnName="Building_BuildingID" />
+      </EndProperty>
+      <EndProperty Name="Thing">
+        <ScalarProperty Name="ThingID" ColumnName="ThingID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoomItem" TypeName="Model.RoomItem" StoreEntitySet="Item">
+      <EndProperty Name="Room">
+        <ScalarProperty Name="RoomId" ColumnName="Room_RoomId" />
+      </EndProperty>
+      <EndProperty Name="Item">
+        <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ItemTypeItem" TypeName="Model.ItemTypeItem" StoreEntitySet="Item">
+      <EndProperty Name="ItemType">
+        <ScalarProperty Name="ItemTypeID" ColumnName="ItemType_ItemTypeID" />
+      </EndProperty>
+      <EndProperty Name="Item">
+        <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+      </EndProperty>
+      <Condition ColumnName="ItemType_ItemTypeID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ThingItem" TypeName="Model.ThingItem" StoreEntitySet="Item">
+      <EndProperty Name="Thing">
+        <ScalarProperty Name="ThingID" ColumnName="Thing_ThingID" />
+      </EndProperty>
+      <EndProperty Name="Item">
+        <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+      </EndProperty>
+      <Condition ColumnName="Thing_ThingID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerItemType" TypeName="Model.CustomerItemType" StoreEntitySet="ItemType">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="Customer_CustomerID" />
+      </EndProperty>
+      <EndProperty Name="ItemType">
+        <ScalarProperty Name="ItemTypeID" ColumnName="ItemTypeID" />
+      </EndProperty>
+      <Condition ColumnName="Customer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

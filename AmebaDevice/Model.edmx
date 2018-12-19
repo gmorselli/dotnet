@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Model.Store.Customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Building" EntityType="Model.Store.Building" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Floor" EntityType="Model.Store.Floor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Room" EntityType="Model.Store.Room" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Thing" EntityType="Model.Store.Thing" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ItemType" EntityType="Model.Store.ItemType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Item" EntityType="Model.Store.Item" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CustomerBuilding" Association="Model.Store.CustomerBuilding">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Building" EntitySet="Building" />
+    </AssociationSet>
+    <AssociationSet Name="BuildingFloor" Association="Model.Store.BuildingFloor">
+      <End Role="Building" EntitySet="Building" />
+      <End Role="Floor" EntitySet="Floor" />
+    </AssociationSet>
+    <AssociationSet Name="FloorRoom" Association="Model.Store.FloorRoom">
+      <End Role="Floor" EntitySet="Floor" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerThing" Association="Model.Store.CustomerThing">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Thing" EntitySet="Thing" />
+    </AssociationSet>
+    <AssociationSet Name="BuildingThing" Association="Model.Store.BuildingThing">
+      <End Role="Building" EntitySet="Building" />
+      <End Role="Thing" EntitySet="Thing" />
+    </AssociationSet>
+    <AssociationSet Name="RoomItem" Association="Model.Store.RoomItem">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="ItemTypeItem" Association="Model.Store.ItemTypeItem">
+      <End Role="ItemType" EntitySet="ItemType" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="ThingItem" Association="Model.Store.ThingItem">
+      <End Role="Thing" EntitySet="Thing" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerItemType" Association="Model.Store.CustomerItemType">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="ItemType" EntitySet="ItemType" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cognome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_role" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Building">
+    <Key>
+      <PropertyRef Name="BuildingID" />
+    </Key>
+    <Property Name="BuildingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Indirizzo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cap" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Citta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Interno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Customer_CustomerID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Floor">
+    <Key>
+      <PropertyRef Name="FloorID" />
+    </Key>
+    <Property Name="FloorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descrizione" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Building_BuildingID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descrizione" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Floor_FloorID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Thing">
+    <Key>
+      <PropertyRef Name="ThingID" />
+    </Key>
+    <Property Name="ThingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Num_Uscite" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezzo" Type="float" Nullable="false" />
+    <Property Name="Customer_CustomerID" Type="int" Nullable="true" />
+    <Property Name="Building_BuildingID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemType">
+    <Key>
+      <PropertyRef Name="ItemTypeID" />
+    </Key>
+    <Property Name="ItemTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Categoria" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Marca" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Modello" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descrizione" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Customer_CustomerID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConsumoEnergetico" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seriale" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Room_RoomId" Type="int" Nullable="false" />
+    <Property Name="ItemType_ItemTypeID" Type="int" Nullable="true" />
+    <Property Name="Thing_ThingID" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="CustomerBuilding">
+    <End Role="Customer" Type="Model.Store.Customer" Multiplicity="0..1" />
+    <End Role="Building" Type="Model.Store.Building" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Building">
+        <PropertyRef Name="Customer_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BuildingFloor">
+    <End Role="Building" Type="Model.Store.Building" Multiplicity="1" />
+    <End Role="Floor" Type="Model.Store.Floor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="BuildingID" />
+      </Principal>
+      <Dependent Role="Floor">
+        <PropertyRef Name="Building_BuildingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FloorRoom">
+    <End Role="Floor" Type="Model.Store.Floor" Multiplicity="1" />
+    <End Role="Room" Type="Model.Store.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Floor">
+        <PropertyRef Name="FloorID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="Floor_FloorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerThing">
+    <End Role="Customer" Type="Model.Store.Customer" Multiplicity="0..1" />
+    <End Role="Thing" Type="Model.Store.Thing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Thing">
+        <PropertyRef Name="Customer_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BuildingThing">
+    <End Role="Building" Type="Model.Store.Building" Multiplicity="1" />
+    <End Role="Thing" Type="Model.Store.Thing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="BuildingID" />
+      </Principal>
+      <Dependent Role="Thing">
+        <PropertyRef Name="Building_BuildingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomItem">
+    <End Role="Room" Type="Model.Store.Room" Multiplicity="1" />
+    <End Role="Item" Type="Model.Store.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="Room_RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ItemTypeItem">
+    <End Role="ItemType" Type="Model.Store.ItemType" Multiplicity="0..1" />
+    <End Role="Item" Type="Model.Store.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemType">
+        <PropertyRef Name="ItemTypeID" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="ItemType_ItemTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ThingItem">
+    <End Role="Thing" Type="Model.Store.Thing" Multiplicity="0..1" />
+    <End Role="Item" Type="Model.Store.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Thing">
+        <PropertyRef Name="ThingID" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="Thing_ThingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerItemType">
+    <End Role="Customer" Type="Model.Store.Customer" Multiplicity="0..1" />
+    <End Role="ItemType" Type="Model.Store.ItemType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="ItemType">
+        <PropertyRef Name="Customer_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer" EntityType="Model.Customer" />
+          <EntitySet Name="Building" EntityType="Model.Building" />
+          <AssociationSet Name="CustomerBuilding" Association="Model.CustomerBuilding">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Building" EntitySet="Building" />
+          </AssociationSet>
+          <EntitySet Name="Floor" EntityType="Model.Floor" />
+          <AssociationSet Name="BuildingFloor" Association="Model.BuildingFloor">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Floor" EntitySet="Floor" />
+          </AssociationSet>
+          <EntitySet Name="Room" EntityType="Model.Room" />
+          <AssociationSet Name="FloorRoom" Association="Model.FloorRoom">
+            <End Role="Floor" EntitySet="Floor" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <EntitySet Name="Thing" EntityType="Model.Thing" />
+          <AssociationSet Name="CustomerThing" Association="Model.CustomerThing">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Thing" EntitySet="Thing" />
+          </AssociationSet>
+          <AssociationSet Name="BuildingThing" Association="Model.BuildingThing">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Thing" EntitySet="Thing" />
+          </AssociationSet>
+          <EntitySet Name="ItemType" EntityType="Model.ItemType" />
+          <EntitySet Name="Item" EntityType="Model.Item" />
+          <AssociationSet Name="RoomItem" Association="Model.RoomItem">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="ItemTypeItem" Association="Model.ItemTypeItem">
+            <End Role="ItemType" EntitySet="ItemType" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="ThingItem" Association="Model.ThingItem">
+            <End Role="Thing" EntitySet="Thing" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerItemType" Association="Model.CustomerItemType">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="ItemType" EntitySet="ItemType" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <Property Name="Cognome" Type="String" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="User_role" Type="String" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="Model.CustomerBuilding" FromRole="Customer" ToRole="Building" />
+          <NavigationProperty Name="Thing" Relationship="Model.CustomerThing" FromRole="Customer" ToRole="Thing" />
+          <NavigationProperty Name="ItemType" Relationship="Model.CustomerItemType" FromRole="Customer" ToRole="ItemType" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingID" />
+          </Key>
+          <Property Name="BuildingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Indirizzo" Type="String" Nullable="false" />
+          <Property Name="Cap" Type="String" Nullable="false" />
+          <Property Name="Citta" Type="String" Nullable="false" />
+          <Property Name="Interno" Type="String" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Model.CustomerBuilding" FromRole="Building" ToRole="Customer" />
+          <NavigationProperty Name="Floor" Relationship="Model.BuildingFloor" FromRole="Building" ToRole="Floor" />
+          <NavigationProperty Name="Thing" Relationship="Model.BuildingThing" FromRole="Building" ToRole="Thing" />
+        </EntityType>
+        <Association Name="CustomerBuilding">
+          <End Type="Model.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="Model.Building" Role="Building" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Floor">
+          <Key>
+            <PropertyRef Name="FloorID" />
+          </Key>
+          <Property Name="FloorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <Property Name="Descrizione" Type="String" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="Model.BuildingFloor" FromRole="Floor" ToRole="Building" />
+          <NavigationProperty Name="Room" Relationship="Model.FloorRoom" FromRole="Floor" ToRole="Room" />
+        </EntityType>
+        <Association Name="BuildingFloor">
+          <End Type="Model.Building" Role="Building" Multiplicity="1" />
+          <End Type="Model.Floor" Role="Floor" Multiplicity="*" >
+          </End>
+        </Association>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <Property Name="Descrizione" Type="String" Nullable="false" />
+          <NavigationProperty Name="Floor" Relationship="Model.FloorRoom" FromRole="Room" ToRole="Floor" />
+          <NavigationProperty Name="Item" Relationship="Model.RoomItem" FromRole="Room" ToRole="Item" />
+        </EntityType>
+        <Association Name="FloorRoom">
+          <End Type="Model.Floor" Role="Floor" Multiplicity="1" />
+          <End Type="Model.Room" Role="Room" Multiplicity="*" >
+          </End>
+        </Association>
+        <EntityType Name="Thing">
+          <Key>
+            <PropertyRef Name="ThingID" />
+          </Key>
+          <Property Name="ThingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Num_Uscite" Type="String" Nullable="false" />
+          <Property Name="Prezzo" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Model.CustomerThing" FromRole="Thing" ToRole="Customer" />
+          <NavigationProperty Name="Building" Relationship="Model.BuildingThing" FromRole="Thing" ToRole="Building" />
+          <NavigationProperty Name="Item" Relationship="Model.ThingItem" FromRole="Thing" ToRole="Item" />
+        </EntityType>
+        <Association Name="CustomerThing">
+          <End Type="Model.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="Model.Thing" Role="Thing" Multiplicity="*" />
+        </Association>
+        <Association Name="BuildingThing">
+          <End Type="Model.Building" Role="Building" Multiplicity="1" />
+          <End Type="Model.Thing" Role="Thing" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ItemType">
+          <Key>
+            <PropertyRef Name="ItemTypeID" />
+          </Key>
+          <Property Name="ItemTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Categoria" Type="String" Nullable="false" />
+          <Property Name="Marca" Type="String" Nullable="false" />
+          <Property Name="Modello" Type="String" Nullable="false" />
+          <Property Name="Descrizione" Type="String" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Model.ItemTypeItem" FromRole="ItemType" ToRole="Item" />
+          <NavigationProperty Name="Customer" Relationship="Model.CustomerItemType" FromRole="ItemType" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsumoEnergetico" Type="String" Nullable="false" />
+          <Property Name="Seriale" Type="String" Nullable="false" />
+          <NavigationProperty Name="Room" Relationship="Model.RoomItem" FromRole="Item" ToRole="Room" />
+          <NavigationProperty Name="ItemType" Relationship="Model.ItemTypeItem" FromRole="Item" ToRole="ItemType" />
+          <NavigationProperty Name="Thing" Relationship="Model.ThingItem" FromRole="Item" ToRole="Thing" />
+        </EntityType>
+        <Association Name="RoomItem">
+          <End Type="Model.Room" Role="Room" Multiplicity="1" />
+          <End Type="Model.Item" Role="Item" Multiplicity="*" >
+          </End>
+        </Association>
+        <Association Name="ItemTypeItem">
+          <End Type="Model.ItemType" Role="ItemType" Multiplicity="0..1" />
+          <End Type="Model.Item" Role="Item" Multiplicity="*" >
+          </End>
+        </Association>
+        <Association Name="ThingItem">
+          <End Type="Model.Thing" Role="Thing" Multiplicity="0..1" />
+          <End Type="Model.Item" Role="Item" Multiplicity="*" />
+        </Association>
+        <Association Name="CustomerItemType">
+          <End Type="Model.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="Model.ItemType" Role="ItemType" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Customer)">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="User_role" ColumnName="User_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Building">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Building)">
+        <MappingFragment StoreEntitySet="Building">
+          <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+          <ScalarProperty Name="Indirizzo" ColumnName="Indirizzo" />
+          <ScalarProperty Name="Cap" ColumnName="Cap" />
+          <ScalarProperty Name="Citta" ColumnName="Citta" />
+          <ScalarProperty Name="Interno" ColumnName="Interno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Floor">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Floor)">
+        <MappingFragment StoreEntitySet="Floor">
+          <ScalarProperty Name="FloorID" ColumnName="FloorID" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Room">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Room)">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Thing">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Thing)">
+        <MappingFragment StoreEntitySet="Thing">
+          <ScalarProperty Name="ThingID" ColumnName="ThingID" />
+          <ScalarProperty Name="Num_Uscite" ColumnName="Num_Uscite" />
+          <ScalarProperty Name="Prezzo" ColumnName="Prezzo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemType">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ItemType)">
+        <MappingFragment StoreEntitySet="ItemType">
+          <ScalarProperty Name="ItemTypeID" ColumnName="ItemTypeID" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modello" ColumnName="Modello" />
+          <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Item">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Item)">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ConsumoEnergetico" ColumnName="ConsumoEnergetico" />
+          <ScalarProperty Name="Seriale" ColumnName="Seriale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CustomerBuilding" TypeName="Model.CustomerBuilding" StoreEntitySet="Building">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="Customer_CustomerID" />
+      </EndProperty>
+      <EndProperty Name="Building">
+        <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+      </EndProperty>
+      <Condition ColumnName="Customer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BuildingFloor" TypeName="Model.BuildingFloor" StoreEntitySet="Floor">
+      <EndProperty Name="Building">
+        <ScalarProperty Name="BuildingID" ColumnName="Building_BuildingID" />
+      </EndProperty>
+      <EndProperty Name="Floor">
+        <ScalarProperty Name="FloorID" ColumnName="FloorID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FloorRoom" TypeName="Model.FloorRoom" StoreEntitySet="Room">
+      <EndProperty Name="Floor">
+        <ScalarProperty Name="FloorID" ColumnName="Floor_FloorID" />
+      </EndProperty>
+      <EndProperty Name="Room">
+        <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerThing" TypeName="Model.CustomerThing" StoreEntitySet="Thing">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="Customer_CustomerID" />
+      </EndProperty>
+      <EndProperty Name="Thing">
+        <ScalarProperty Name="ThingID" ColumnName="ThingID" />
+      </EndProperty>
+      <Condition ColumnName="Customer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BuildingThing" TypeName="Model.BuildingThing" StoreEntitySet="Thing">
+      <EndProperty Name="Building">
+        <ScalarProperty Name="BuildingID" ColumnName="Building_BuildingID" />
+      </EndProperty>
+      <EndProperty Name="Thing">
+        <ScalarProperty Name="ThingID" ColumnName="ThingID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoomItem" TypeName="Model.RoomItem" StoreEntitySet="Item">
+      <EndProperty Name="Room">
+        <ScalarProperty Name="RoomId" ColumnName="Room_RoomId" />
+      </EndProperty>
+      <EndProperty Name="Item">
+        <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ItemTypeItem" TypeName="Model.ItemTypeItem" StoreEntitySet="Item">
+      <EndProperty Name="ItemType">
+        <ScalarProperty Name="ItemTypeID" ColumnName="ItemType_ItemTypeID" />
+      </EndProperty>
+      <EndProperty Name="Item">
+        <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+      </EndProperty>
+      <Condition ColumnName="ItemType_ItemTypeID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ThingItem" TypeName="Model.ThingItem" StoreEntitySet="Item">
+      <EndProperty Name="Thing">
+        <ScalarProperty Name="ThingID" ColumnName="Thing_ThingID" />
+      </EndProperty>
+      <EndProperty Name="Item">
+        <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+      </EndProperty>
+      <Condition ColumnName="Thing_ThingID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerItemType" TypeName="Model.CustomerItemType" StoreEntitySet="ItemType">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="Customer_CustomerID" />
+      </EndProperty>
+      <EndProperty Name="ItemType">
+        <ScalarProperty Name="ItemTypeID" ColumnName="ItemTypeID" />
+      </EndProperty>
+      <Condition ColumnName="Customer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
