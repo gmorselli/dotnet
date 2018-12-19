@@ -1,4 +1,4 @@
-﻿// Generazione del codice predefinita abilitata per il modello 'C:\Users\Contrader_109\Desktop\DotNet AmebaDevices\AssetManagementBase\AmebaDevice\Model.edmx'. 
+﻿// Generazione del codice predefinita abilitata per il modello 'D:\dotnet\AmebaDevice\AmebaDevice\AmebaDevice\Model.edmx'. 
 // Per abilitare la generazione del codice legacy, modificare il valore della proprietà della finestra di progettazione 'Strategia di generazione del codice
 // su 'Legacy ObjectContext'. Questa proprietà è disponibile nella finestra Proprietà quando il modello è
 // aperto nella finestra di progettazione.

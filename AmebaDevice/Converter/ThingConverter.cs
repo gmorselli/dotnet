@@ -22,7 +22,7 @@ namespace AmebaDevice.Converter
             return thingDTO;
         }
 
-        public static Thing ConvertToThing(ThingDTO tDTO)
+        public static Thing convertToThing(ThingDTO tDTO)
         {
             Thing thing = new Thing();
             thing.ThingID = tDTO.ID;

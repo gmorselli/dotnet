@@ -12,24 +12,20 @@ namespace AmebaDevice
     using System;
     using System.Collections.Generic;
     
-    public partial class ItemType
+    public partial class Listino
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ItemType()
+        public Listino()
         {
-            this.Item = new HashSet<Item>();
             this.Prezzo = new HashSet<Prezzo>();
         }
     
-        public int ItemTypeID { get; set; }
-        public string Categoria { get; set; }
-        public string Marca { get; set; }
-        public string Modello { get; set; }
-        public string Descrizione { get; set; }
+        public int ListinoID { get; set; }
+        public string Anno { get; set; }
+        public string Nome { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item> Item { get; set; }
-        public virtual Customer Customer { get; set; }
+        public virtual Customer Installer { get; set; }
+        public virtual Customer Manufacturer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Prezzo> Prezzo { get; set; }
     }

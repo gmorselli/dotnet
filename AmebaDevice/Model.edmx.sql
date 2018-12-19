@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/18/2018 13:03:44
--- Generated from EDMX file: C:\Users\Contrader_109\Desktop\DotNet AmebaDevices\AssetManagementBase\AmebaDevice\Model.edmx
+-- Date Created: 12/18/2018 17:41:28
+-- Generated from EDMX file: D:\dotnet\MyAmebaDevice\AmebaDevices\AssetManagementBase\dotnet\AmebaDevice\Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -41,6 +41,21 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ThingItem]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Item] DROP CONSTRAINT [FK_ThingItem];
 GO
+IF OBJECT_ID(N'[dbo].[FK_CustomerItemType]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ItemType] DROP CONSTRAINT [FK_CustomerItemType];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CustomerListino]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Listino] DROP CONSTRAINT [FK_CustomerListino];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CustomerListino1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Listino] DROP CONSTRAINT [FK_CustomerListino1];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ItemTypePrezzo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Prezzo] DROP CONSTRAINT [FK_ItemTypePrezzo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ListinoPrezzo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Prezzo] DROP CONSTRAINT [FK_ListinoPrezzo];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -66,6 +81,12 @@ IF OBJECT_ID(N'[dbo].[ItemType]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Item]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Item];
+GO
+IF OBJECT_ID(N'[dbo].[Listino]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Listino];
+GO
+IF OBJECT_ID(N'[dbo].[Prezzo]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Prezzo];
 GO
 
 -- --------------------------------------------------
@@ -145,6 +166,25 @@ CREATE TABLE [dbo].[Item] (
 );
 GO
 
+-- Creating table 'Listino'
+CREATE TABLE [dbo].[Listino] (
+    [ListinoID] int IDENTITY(1,1) NOT NULL,
+    [Anno] nvarchar(max)  NOT NULL,
+    [Nome] nvarchar(max)  NOT NULL,
+    [Installer_CustomerID] int  NULL,
+    [Manufacturer_CustomerID] int  NULL
+);
+GO
+
+-- Creating table 'Prezzo'
+CREATE TABLE [dbo].[Prezzo] (
+    [PrezzoID] int IDENTITY(1,1) NOT NULL,
+    [Price] float  NOT NULL,
+    [ItemType_ItemTypeID] int  NULL,
+    [Listino_ListinoID] int  NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -189,6 +229,18 @@ GO
 ALTER TABLE [dbo].[Item]
 ADD CONSTRAINT [PK_Item]
     PRIMARY KEY CLUSTERED ([ItemID] ASC);
+GO
+
+-- Creating primary key on [ListinoID] in table 'Listino'
+ALTER TABLE [dbo].[Listino]
+ADD CONSTRAINT [PK_Listino]
+    PRIMARY KEY CLUSTERED ([ListinoID] ASC);
+GO
+
+-- Creating primary key on [PrezzoID] in table 'Prezzo'
+ALTER TABLE [dbo].[Prezzo]
+ADD CONSTRAINT [PK_Prezzo]
+    PRIMARY KEY CLUSTERED ([PrezzoID] ASC);
 GO
 
 -- --------------------------------------------------
@@ -328,6 +380,66 @@ GO
 CREATE INDEX [IX_FK_CustomerItemType]
 ON [dbo].[ItemType]
     ([Customer_CustomerID]);
+GO
+
+-- Creating foreign key on [Installer_CustomerID] in table 'Listino'
+ALTER TABLE [dbo].[Listino]
+ADD CONSTRAINT [FK_CustomerListino]
+    FOREIGN KEY ([Installer_CustomerID])
+    REFERENCES [dbo].[Customer]
+        ([CustomerID])
+    ON DELETE SET NULL ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CustomerListino'
+CREATE INDEX [IX_FK_CustomerListino]
+ON [dbo].[Listino]
+    ([Installer_CustomerID]);
+GO
+
+-- Creating foreign key on [Manufacturer_CustomerID] in table 'Listino'
+ALTER TABLE [dbo].[Listino]
+ADD CONSTRAINT [FK_CustomerListino1]
+    FOREIGN KEY ([Manufacturer_CustomerID])
+    REFERENCES [dbo].[Customer]
+        ([CustomerID])
+    ON DELETE SET NULL ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CustomerListino1'
+CREATE INDEX [IX_FK_CustomerListino1]
+ON [dbo].[Listino]
+    ([Manufacturer_CustomerID]);
+GO
+
+-- Creating foreign key on [ItemType_ItemTypeID] in table 'Prezzo'
+ALTER TABLE [dbo].[Prezzo]
+ADD CONSTRAINT [FK_ItemTypePrezzo]
+    FOREIGN KEY ([ItemType_ItemTypeID])
+    REFERENCES [dbo].[ItemType]
+        ([ItemTypeID])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ItemTypePrezzo'
+CREATE INDEX [IX_FK_ItemTypePrezzo]
+ON [dbo].[Prezzo]
+    ([ItemType_ItemTypeID]);
+GO
+
+-- Creating foreign key on [Listino_ListinoID] in table 'Prezzo'
+ALTER TABLE [dbo].[Prezzo]
+ADD CONSTRAINT [FK_ListinoPrezzo]
+    FOREIGN KEY ([Listino_ListinoID])
+    REFERENCES [dbo].[Listino]
+        ([ListinoID])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ListinoPrezzo'
+CREATE INDEX [IX_FK_ListinoPrezzo]
+ON [dbo].[Prezzo]
+    ([Listino_ListinoID]);
 GO
 
 -- --------------------------------------------------

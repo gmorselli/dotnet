@@ -8,6 +8,7 @@ namespace AmebaDevice.Converter
 {
     public class ItemConverter
     {
+
         public static ItemDTO convertToDTO(Item item)
         {
             ItemDTO itemDTO = new ItemDTO();
@@ -23,8 +24,8 @@ namespace AmebaDevice.Converter
             return itemDTO;
         }
 
-            public static Item convertToItem(ItemDTO itemDTO)
-            {
+        public static Item convertToItem(ItemDTO itemDTO)
+        {
             Item item = new Item();
             item.ItemID = itemDTO.ID;
             item.ConsumoEnergetico = itemDTO.ConsumoEnergetico;
@@ -34,13 +35,10 @@ namespace AmebaDevice.Converter
             if (itemDTO.ItemTypeDTO != null)
                 item.ItemType = ItemTypeConverter.ConvertToItemType(itemDTO.ItemTypeDTO);
             if (itemDTO.ThingDTO != null)
-                item.Thing = ThingConverter.ConvertToThing(itemDTO.ThingDTO);
+                item.Thing = ThingConverter.convertToThing(itemDTO.ThingDTO);
             return item;
 
-            }
-                    
-            
-
-
         }
+
     }
+}

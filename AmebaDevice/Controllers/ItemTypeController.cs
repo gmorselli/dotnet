@@ -46,7 +46,7 @@ namespace AmebaDevice.Controllers
             return "eliminato item con id : " + id;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/ItemType/Inserisci")]
         public string Associa(string categoria, string descrizione, string marca, string modello, int idCustomer)
         {

@@ -17,9 +17,10 @@ namespace AmebaDevice.DAL
         public DbSet<Floor> Floors { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Thing> Things { get; set; }
-
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemType> ItemTypes { get; set; }
+        public DbSet<Listino> Listini { get; set; }
+        public DbSet<Prezzo> Prezzi { get; set; }
 
 
 

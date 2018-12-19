@@ -177,6 +177,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ItemTypeController.cs" />
+    <Compile Include="Controllers\ListinoController.cs" />
+    <Compile Include="Controllers\PrezzoController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\ThingController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -185,6 +187,8 @@
     <Compile Include="Converter\FloorConverter.cs" />
     <Compile Include="Converter\ItemConverter.cs" />
     <Compile Include="Converter\ItemTypeConverter.cs" />
+    <Compile Include="Converter\ListinoConverter.cs" />
+    <Compile Include="Converter\PrezzoConverter.cs" />
     <Compile Include="Converter\RoomConverter.cs" />
     <Compile Include="Converter\ThingConverter.cs" />
     <Compile Include="Customer.cs">
@@ -197,6 +201,8 @@
     <Compile Include="DTO\FloorDTO.cs" />
     <Compile Include="DTO\ItemDTO.cs" />
     <Compile Include="DTO\ItemTypeDTO.cs" />
+    <Compile Include="DTO\ListinoDTO.cs" />
+    <Compile Include="DTO\PrezzoDTO.cs" />
     <Compile Include="DTO\RoomDTO.cs" />
     <Compile Include="DTO\ThingDTO.cs" />
     <Compile Include="Floor.cs">
@@ -209,6 +215,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ItemType.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Listino.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.cs">
@@ -226,6 +235,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Prezzo.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -235,6 +247,8 @@
     <Compile Include="Services\FloorService.cs" />
     <Compile Include="Services\ItemService.cs" />
     <Compile Include="Services\ItemTypeService.cs" />
+    <Compile Include="Services\ListinoService.cs" />
+    <Compile Include="Services\PrezzoService.cs" />
     <Compile Include="Services\RoomService.cs" />
     <Compile Include="Services\ThingService.cs" />
     <Compile Include="Thing.cs">

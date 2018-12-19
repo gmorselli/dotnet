@@ -32,5 +32,7 @@ namespace AmebaDevice
         public virtual DbSet<Thing> Thing { get; set; }
         public virtual DbSet<ItemType> ItemType { get; set; }
         public virtual DbSet<Item> Item { get; set; }
+        public virtual DbSet<Listino> Listino { get; set; }
+        public virtual DbSet<Prezzo> Prezzo { get; set; }
     }
 }

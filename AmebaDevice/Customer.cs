@@ -20,6 +20,8 @@ namespace AmebaDevice
             this.Building = new HashSet<Building>();
             this.Thing = new HashSet<Thing>();
             this.ItemType = new HashSet<ItemType>();
+            this.ListinoI = new HashSet<Listino>();
+            this.ListinoM = new HashSet<Listino>();
         }
     
         public int CustomerID { get; set; }
@@ -36,5 +38,9 @@ namespace AmebaDevice
         public virtual ICollection<Thing> Thing { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemType> ItemType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Listino> ListinoI { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Listino> ListinoM { get; set; }
     }
 }

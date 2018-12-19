@@ -10,6 +10,7 @@ namespace AmebaDevice.Services
 {
     public class ItemService
     {
+
         private ModelloDatiDbContext modelloDatiDbContext;
 
         public ItemService()
@@ -17,7 +18,7 @@ namespace AmebaDevice.Services
             modelloDatiDbContext = new ModelloDatiDbContext();
         }
 
-        public void Associa (int id, string consumoEnergetico, string seriale, int idItemType, int idRoom, int idThing)
+        public void Associa(int id, string consumoEnergetico, string seriale, int idItemType, int idRoom, int idThing)
         {
             ItemType i = modelloDatiDbContext.ItemTypes.Find(idItemType);
             Room r = modelloDatiDbContext.Rooms.Find(idRoom);
@@ -32,8 +33,8 @@ namespace AmebaDevice.Services
         {
             modelloDatiDbContext.SaveChanges();
         }
-        
-        public IEnumerable<ItemDTO> Get ()
+
+        public IEnumerable<ItemDTO> Get()
         {
             List<ItemDTO> list = new List<ItemDTO>();
             foreach (Item i in modelloDatiDbContext.Items)

@@ -72,6 +72,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Listino">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Listino)">
+        <MappingFragment StoreEntitySet="Listino">
+          <ScalarProperty Name="ListinoID" ColumnName="ListinoID" />
+          <ScalarProperty Name="Anno" ColumnName="Anno" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prezzo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Prezzo)">
+        <MappingFragment StoreEntitySet="Prezzo">
+          <ScalarProperty Name="PrezzoID" ColumnName="PrezzoID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="CustomerBuilding" TypeName="Model.CustomerBuilding" StoreEntitySet="Building">
       <EndProperty Name="Customer">
         <ScalarProperty Name="CustomerID" ColumnName="Customer_CustomerID" />
@@ -148,6 +165,42 @@
         <ScalarProperty Name="ItemTypeID" ColumnName="ItemTypeID" />
       </EndProperty>
       <Condition ColumnName="Customer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerListino" TypeName="Model.CustomerListino" StoreEntitySet="Listino">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="Installer_CustomerID" />
+      </EndProperty>
+      <EndProperty Name="Listino">
+        <ScalarProperty Name="ListinoID" ColumnName="ListinoID" />
+      </EndProperty>
+      <Condition ColumnName="Installer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerListino1" TypeName="Model.CustomerListino1" StoreEntitySet="Listino">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="Manufacturer_CustomerID" />
+      </EndProperty>
+      <EndProperty Name="Listino">
+        <ScalarProperty Name="ListinoID" ColumnName="ListinoID" />
+      </EndProperty>
+      <Condition ColumnName="Manufacturer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ItemTypePrezzo" TypeName="Model.ItemTypePrezzo" StoreEntitySet="Prezzo">
+      <EndProperty Name="ItemType">
+        <ScalarProperty Name="ItemTypeID" ColumnName="ItemType_ItemTypeID" />
+      </EndProperty>
+      <EndProperty Name="Prezzo">
+        <ScalarProperty Name="PrezzoID" ColumnName="PrezzoID" />
+      </EndProperty>
+      <Condition ColumnName="ItemType_ItemTypeID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ListinoPrezzo" TypeName="Model.ListinoPrezzo" StoreEntitySet="Prezzo">
+      <EndProperty Name="Listino">
+        <ScalarProperty Name="ListinoID" ColumnName="Listino_ListinoID" />
+      </EndProperty>
+      <EndProperty Name="Prezzo">
+        <ScalarProperty Name="PrezzoID" ColumnName="PrezzoID" />
+      </EndProperty>
+      <Condition ColumnName="Listino_ListinoID" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

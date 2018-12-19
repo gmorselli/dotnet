@@ -13,6 +13,8 @@
     <EntitySet Name="Thing" EntityType="Model.Store.Thing" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ItemType" EntityType="Model.Store.ItemType" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Item" EntityType="Model.Store.Item" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Listino" EntityType="Model.Store.Listino" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Prezzo" EntityType="Model.Store.Prezzo" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CustomerBuilding" Association="Model.Store.CustomerBuilding">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Building" EntitySet="Building" />
@@ -48,6 +50,22 @@
     <AssociationSet Name="CustomerItemType" Association="Model.Store.CustomerItemType">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="ItemType" EntitySet="ItemType" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerListino" Association="Model.Store.CustomerListino">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Listino" EntitySet="Listino" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerListino1" Association="Model.Store.CustomerListino1">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Listino" EntitySet="Listino" />
+    </AssociationSet>
+    <AssociationSet Name="ItemTypePrezzo" Association="Model.Store.ItemTypePrezzo">
+      <End Role="ItemType" EntitySet="ItemType" />
+      <End Role="Prezzo" EntitySet="Prezzo" />
+    </AssociationSet>
+    <AssociationSet Name="ListinoPrezzo" Association="Model.Store.ListinoPrezzo">
+      <End Role="Listino" EntitySet="Listino" />
+      <End Role="Prezzo" EntitySet="Prezzo" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Customer">
@@ -122,6 +140,25 @@
     <Property Name="Room_RoomId" Type="int" Nullable="false" />
     <Property Name="ItemType_ItemTypeID" Type="int" Nullable="true" />
     <Property Name="Thing_ThingID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Listino">
+    <Key>
+      <PropertyRef Name="ListinoID" />
+    </Key>
+    <Property Name="ListinoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Anno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Installer_CustomerID" Type="int" Nullable="true" />
+    <Property Name="Manufacturer_CustomerID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Prezzo">
+    <Key>
+      <PropertyRef Name="PrezzoID" />
+    </Key>
+    <Property Name="PrezzoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="ItemType_ItemTypeID" Type="int" Nullable="true" />
+    <Property Name="Listino_ListinoID" Type="int" Nullable="true" />
   </EntityType>
   <Association Name="CustomerBuilding">
     <End Role="Customer" Type="Model.Store.Customer" Multiplicity="0..1" />
@@ -231,6 +268,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="CustomerListino">
+    <End Role="Customer" Type="Model.Store.Customer" Multiplicity="0..1" />
+    <End Role="Listino" Type="Model.Store.Listino" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Listino">
+        <PropertyRef Name="Installer_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerListino1">
+    <End Role="Customer" Type="Model.Store.Customer" Multiplicity="0..1" />
+    <End Role="Listino" Type="Model.Store.Listino" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Listino">
+        <PropertyRef Name="Manufacturer_CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ItemTypePrezzo">
+    <End Role="ItemType" Type="Model.Store.ItemType" Multiplicity="0..1" />
+    <End Role="Prezzo" Type="Model.Store.Prezzo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemType">
+        <PropertyRef Name="ItemTypeID" />
+      </Principal>
+      <Dependent Role="Prezzo">
+        <PropertyRef Name="ItemType_ItemTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ListinoPrezzo">
+    <End Role="Listino" Type="Model.Store.Listino" Multiplicity="0..1" />
+    <End Role="Prezzo" Type="Model.Store.Prezzo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Listino">
+        <PropertyRef Name="ListinoID" />
+      </Principal>
+      <Dependent Role="Prezzo">
+        <PropertyRef Name="Listino_ListinoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -279,6 +364,24 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="ItemType" EntitySet="ItemType" />
           </AssociationSet>
+          <EntitySet Name="Listino" EntityType="Model.Listino" />
+          <AssociationSet Name="CustomerListino" Association="Model.CustomerListino">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Listino" EntitySet="Listino" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerListino1" Association="Model.CustomerListino1">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Listino" EntitySet="Listino" />
+          </AssociationSet>
+          <EntitySet Name="Prezzo" EntityType="Model.Prezzo" />
+          <AssociationSet Name="ItemTypePrezzo" Association="Model.ItemTypePrezzo">
+            <End Role="ItemType" EntitySet="ItemType" />
+            <End Role="Prezzo" EntitySet="Prezzo" />
+          </AssociationSet>
+          <AssociationSet Name="ListinoPrezzo" Association="Model.ListinoPrezzo">
+            <End Role="Listino" EntitySet="Listino" />
+            <End Role="Prezzo" EntitySet="Prezzo" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -294,6 +397,8 @@
           <NavigationProperty Name="Building" Relationship="Model.CustomerBuilding" FromRole="Customer" ToRole="Building" />
           <NavigationProperty Name="Thing" Relationship="Model.CustomerThing" FromRole="Customer" ToRole="Thing" />
           <NavigationProperty Name="ItemType" Relationship="Model.CustomerItemType" FromRole="Customer" ToRole="ItemType" />
+          <NavigationProperty Name="ListinoI" Relationship="Model.CustomerListino" FromRole="Customer" ToRole="Listino" />
+          <NavigationProperty Name="ListinoM" Relationship="Model.CustomerListino1" FromRole="Customer" ToRole="Listino" />
         </EntityType>
         <EntityType Name="Building">
           <Key>
@@ -372,6 +477,7 @@
           <Property Name="Descrizione" Type="String" Nullable="false" />
           <NavigationProperty Name="Item" Relationship="Model.ItemTypeItem" FromRole="ItemType" ToRole="Item" />
           <NavigationProperty Name="Customer" Relationship="Model.CustomerItemType" FromRole="ItemType" ToRole="Customer" />
+          <NavigationProperty Name="Prezzo" Relationship="Model.ItemTypePrezzo" FromRole="ItemType" ToRole="Prezzo" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -401,6 +507,42 @@
         <Association Name="CustomerItemType">
           <End Type="Model.Customer" Role="Customer" Multiplicity="0..1" />
           <End Type="Model.ItemType" Role="ItemType" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Listino">
+          <Key>
+            <PropertyRef Name="ListinoID" />
+          </Key>
+          <Property Name="ListinoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Anno" Type="String" Nullable="false" />
+          <Property Name="Nome" Type="String" Nullable="false" />
+          <NavigationProperty Name="Installer" Relationship="Model.CustomerListino" FromRole="Listino" ToRole="Customer" />
+          <NavigationProperty Name="Manufacturer" Relationship="Model.CustomerListino1" FromRole="Listino" ToRole="Customer" />
+          <NavigationProperty Name="Prezzo" Relationship="Model.ListinoPrezzo" FromRole="Listino" ToRole="Prezzo" />
+        </EntityType>
+        <Association Name="CustomerListino">
+          <End Type="Model.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="Model.Listino" Role="Listino" Multiplicity="*" />
+        </Association>
+        <Association Name="CustomerListino1">
+          <End Type="Model.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="Model.Listino" Role="Listino" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Prezzo">
+          <Key>
+            <PropertyRef Name="PrezzoID" />
+          </Key>
+          <Property Name="PrezzoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="ItemType" Relationship="Model.ItemTypePrezzo" FromRole="Prezzo" ToRole="ItemType" />
+          <NavigationProperty Name="Listino" Relationship="Model.ListinoPrezzo" FromRole="Prezzo" ToRole="Listino" />
+        </EntityType>
+        <Association Name="ItemTypePrezzo">
+          <End Type="Model.ItemType" Role="ItemType" Multiplicity="0..1" />
+          <End Type="Model.Prezzo" Role="Prezzo" Multiplicity="*" />
+        </Association>
+        <Association Name="ListinoPrezzo">
+          <End Type="Model.Listino" Role="Listino" Multiplicity="0..1" />
+          <End Type="Model.Prezzo" Role="Prezzo" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -476,6 +618,23 @@
           <ScalarProperty Name="ItemID" ColumnName="ItemID" />
           <ScalarProperty Name="ConsumoEnergetico" ColumnName="ConsumoEnergetico" />
           <ScalarProperty Name="Seriale" ColumnName="Seriale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Listino">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Listino)">
+        <MappingFragment StoreEntitySet="Listino">
+          <ScalarProperty Name="ListinoID" ColumnName="ListinoID" />
+          <ScalarProperty Name="Anno" ColumnName="Anno" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prezzo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Prezzo)">
+        <MappingFragment StoreEntitySet="Prezzo">
+          <ScalarProperty Name="PrezzoID" ColumnName="PrezzoID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -555,6 +714,42 @@
         <ScalarProperty Name="ItemTypeID" ColumnName="ItemTypeID" />
       </EndProperty>
       <Condition ColumnName="Customer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerListino" TypeName="Model.CustomerListino" StoreEntitySet="Listino">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="Installer_CustomerID" />
+      </EndProperty>
+      <EndProperty Name="Listino">
+        <ScalarProperty Name="ListinoID" ColumnName="ListinoID" />
+      </EndProperty>
+      <Condition ColumnName="Installer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerListino1" TypeName="Model.CustomerListino1" StoreEntitySet="Listino">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="Manufacturer_CustomerID" />
+      </EndProperty>
+      <EndProperty Name="Listino">
+        <ScalarProperty Name="ListinoID" ColumnName="ListinoID" />
+      </EndProperty>
+      <Condition ColumnName="Manufacturer_CustomerID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ItemTypePrezzo" TypeName="Model.ItemTypePrezzo" StoreEntitySet="Prezzo">
+      <EndProperty Name="ItemType">
+        <ScalarProperty Name="ItemTypeID" ColumnName="ItemType_ItemTypeID" />
+      </EndProperty>
+      <EndProperty Name="Prezzo">
+        <ScalarProperty Name="PrezzoID" ColumnName="PrezzoID" />
+      </EndProperty>
+      <Condition ColumnName="ItemType_ItemTypeID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ListinoPrezzo" TypeName="Model.ListinoPrezzo" StoreEntitySet="Prezzo">
+      <EndProperty Name="Listino">
+        <ScalarProperty Name="ListinoID" ColumnName="Listino_ListinoID" />
+      </EndProperty>
+      <EndProperty Name="Prezzo">
+        <ScalarProperty Name="PrezzoID" ColumnName="PrezzoID" />
+      </EndProperty>
+      <Condition ColumnName="Listino_ListinoID" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>

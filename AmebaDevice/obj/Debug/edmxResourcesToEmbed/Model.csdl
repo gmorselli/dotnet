@@ -44,6 +44,24 @@
       <End Role="Customer" EntitySet="Customer" />
       <End Role="ItemType" EntitySet="ItemType" />
     </AssociationSet>
+    <EntitySet Name="Listino" EntityType="Model.Listino" />
+    <AssociationSet Name="CustomerListino" Association="Model.CustomerListino">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Listino" EntitySet="Listino" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerListino1" Association="Model.CustomerListino1">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Listino" EntitySet="Listino" />
+    </AssociationSet>
+    <EntitySet Name="Prezzo" EntityType="Model.Prezzo" />
+    <AssociationSet Name="ItemTypePrezzo" Association="Model.ItemTypePrezzo">
+      <End Role="ItemType" EntitySet="ItemType" />
+      <End Role="Prezzo" EntitySet="Prezzo" />
+    </AssociationSet>
+    <AssociationSet Name="ListinoPrezzo" Association="Model.ListinoPrezzo">
+      <End Role="Listino" EntitySet="Listino" />
+      <End Role="Prezzo" EntitySet="Prezzo" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Customer">
     <Key>
@@ -59,6 +77,8 @@
     <NavigationProperty Name="Building" Relationship="Model.CustomerBuilding" FromRole="Customer" ToRole="Building" />
     <NavigationProperty Name="Thing" Relationship="Model.CustomerThing" FromRole="Customer" ToRole="Thing" />
     <NavigationProperty Name="ItemType" Relationship="Model.CustomerItemType" FromRole="Customer" ToRole="ItemType" />
+    <NavigationProperty Name="ListinoI" Relationship="Model.CustomerListino" FromRole="Customer" ToRole="Listino" />
+    <NavigationProperty Name="ListinoM" Relationship="Model.CustomerListino1" FromRole="Customer" ToRole="Listino" />
   </EntityType>
   <EntityType Name="Building">
     <Key>
@@ -135,6 +155,7 @@
     <Property Name="Descrizione" Type="String" Nullable="false" />
     <NavigationProperty Name="Item" Relationship="Model.ItemTypeItem" FromRole="ItemType" ToRole="Item" />
     <NavigationProperty Name="Customer" Relationship="Model.CustomerItemType" FromRole="ItemType" ToRole="Customer" />
+    <NavigationProperty Name="Prezzo" Relationship="Model.ItemTypePrezzo" FromRole="ItemType" ToRole="Prezzo" />
   </EntityType>
   <EntityType Name="Item">
     <Key>
@@ -162,5 +183,41 @@
   <Association Name="CustomerItemType">
     <End Type="Model.Customer" Role="Customer" Multiplicity="0..1" />
     <End Type="Model.ItemType" Role="ItemType" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Listino">
+    <Key>
+      <PropertyRef Name="ListinoID" />
+    </Key>
+    <Property Name="ListinoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Anno" Type="String" Nullable="false" />
+    <Property Name="Nome" Type="String" Nullable="false" />
+    <NavigationProperty Name="Installer" Relationship="Model.CustomerListino" FromRole="Listino" ToRole="Customer" />
+    <NavigationProperty Name="Manufacturer" Relationship="Model.CustomerListino1" FromRole="Listino" ToRole="Customer" />
+    <NavigationProperty Name="Prezzo" Relationship="Model.ListinoPrezzo" FromRole="Listino" ToRole="Prezzo" />
+  </EntityType>
+  <Association Name="CustomerListino">
+    <End Type="Model.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="Model.Listino" Role="Listino" Multiplicity="*" />
+  </Association>
+  <Association Name="CustomerListino1">
+    <End Type="Model.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="Model.Listino" Role="Listino" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Prezzo">
+    <Key>
+      <PropertyRef Name="PrezzoID" />
+    </Key>
+    <Property Name="PrezzoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <NavigationProperty Name="ItemType" Relationship="Model.ItemTypePrezzo" FromRole="Prezzo" ToRole="ItemType" />
+    <NavigationProperty Name="Listino" Relationship="Model.ListinoPrezzo" FromRole="Prezzo" ToRole="Listino" />
+  </EntityType>
+  <Association Name="ItemTypePrezzo">
+    <End Type="Model.ItemType" Role="ItemType" Multiplicity="0..1" />
+    <End Type="Model.Prezzo" Role="Prezzo" Multiplicity="*" />
+  </Association>
+  <Association Name="ListinoPrezzo">
+    <End Type="Model.Listino" Role="Listino" Multiplicity="0..1" />
+    <End Type="Model.Prezzo" Role="Prezzo" Multiplicity="*" />
   </Association>
 </Schema>
