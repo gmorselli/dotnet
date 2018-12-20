@@ -22,7 +22,7 @@ export class UpdateFloorComponent implements OnInit{
     
     ngOnInit() {
         this.buildingId = this.route.snapshot.paramMap.get('buildingId');
-        this.floorService.floorsByBuilding(this.buildingId).subscribe((response)=>{ this.floors = response});  
+        this.floorService.floorsByBuilding(Number.parseInt(this.buildingId)).subscribe((response)=>{ this.floors = response});  
        
     }
 

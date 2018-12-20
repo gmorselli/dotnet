@@ -12,7 +12,7 @@ import {tap, catchError } from "rxjs/operators";
 
 export class FloorService {
     
-    baseUrl = 'http://localhost:8080/';
+    baseUrl = 'http://localhost:51947/';
 
 
     constructor(private http: HttpClient) { }
@@ -25,33 +25,30 @@ export class FloorService {
     }
     
 
-    delete(floorId: string): Observable<boolean> {
-        let url : string = this.baseUrl + 'Floors/delete?floorId=' + floorId;
+    delete(floorId: number): Observable<boolean> {
+        let url : string = this.baseUrl + 'api/Floor/' + floorId;
         console.log(url);
-        return <Observable<boolean>> this.http.get<boolean>(url);
+        return <Observable<boolean>> this.http.delete<boolean>(url);
     
     }
 
-    updateFloor(floorId: string, nomeFloor: string, descrizione: string): Observable<Floor> {
-        const params = new HttpParams().set('floorId', floorId)
-        .set('nomeFloor', nomeFloor)
-        .set('descrizione', descrizione);
-        return this.http.post<Floor>('http://localhost:8080/Floors/edit', params);
+    updateFloor(floorId: number, nomeFloor: string, descrizione: string): Observable<Floor> {
+
+        
+        return this.http.put<Floor>(this.baseUrl+'api/Floor/'+floorId+'?nome='+nomeFloor+'&descrizione='+descrizione, "");
 
     }
    
-    newFloor(nomeFloor: string, descrizione: string, buildingId: string): Observable<Floor> {
-        const params = new HttpParams().set('nomeFloor', nomeFloor).set('descrizione', descrizione).set('buildingId', buildingId);
+    newFloor(nomeFloor: string, descrizione: string, buildingId: number): Observable<Floor> {
         console.log(nomeFloor+" "+descrizione+" "+buildingId);
-        return this.http.post<Floor>('http://localhost:8080/Floors/new', params);
+        return this.http.post<Floor>(this.baseUrl+'InserisciF?nome='+nomeFloor+'&descrizione='+descrizione+'&idBuilding='+buildingId, "");
     }
 
-    floorsByBuilding(buildingId: string): Observable<Array<Floor>>{
-        let url: string = this.baseUrl + 'Floors/floorsByBuilding?buildingId='+buildingId;
+    floorsByBuilding(buildingId: number): Observable<Array<Floor>>{
+        let url: string = this.baseUrl+'GetByBuilding?idBuilding='+buildingId;
         let result : Observable<Array<Floor>> = this.http.get<Array<Floor>>(url);
          return result;
     }
-
 
 
 }

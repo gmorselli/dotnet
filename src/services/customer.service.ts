@@ -28,7 +28,10 @@ export class CustomerService{
     } 
     login(username:string, password:string):Observable<Customer>{
         const params = new HttpParams().set('username', username).set('password', password);
+
         return this.http.get<Customer>(base+'Login/Login?username='+username+"&password="+password).
+
+
         pipe(tap((response) => console.log("Utente"), catchError(this.handleError("login error", {})))
         );
     }

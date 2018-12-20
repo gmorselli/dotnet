@@ -24,7 +24,7 @@ export class InsertFloorComponent implements OnInit{
 
     register(f:NgForm, buildingId:string){
         console.log("bestemmmia randommmm "+buildingId);
-        this.floorService.newFloor(f.value.nomeFloor, f.value.descrizione, buildingId).subscribe((Response) => {
+        this.floorService.newFloor(f.value.nomeFloor, f.value.descrizione,Number.parseInt(buildingId)).subscribe((Response) => {
            
             if(Response != null){
                 this.router.navigateByUrl("/gestioneFloor/"+buildingId);
