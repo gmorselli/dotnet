@@ -13,11 +13,11 @@
     <div class="idCustomer"><h3>Username Customer:</h3>
         <div style="padding-left:2%">
             <select class="select" name="usernameSelected" ngModel="usernameSelected">
-              <option *ngFor="let customer of customers" [attr.value]="customer.username">{{customer.username}}</option>
+              <option *ngFor="let customer of customers" [value]="customer.username">{{customer.username}}</option>
         </select>
         </div>
         
-    </div>
+    </div> 
     <div class="idCustomer"><h3>Cosa vuoi modificare?   </h3>&nbsp; 
         <select class="select" name="fieldSelected" ngModel="fieldSelected">
               <option value="1">Nome</option>

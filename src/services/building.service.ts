@@ -9,7 +9,7 @@ import { Building } from '../models/Building';
 
 @Injectable({
     providedIn: 'root'
-})
+}) 
 export class BuildingService {
     baseUrl = 'http://localhost:51947/api/';
     

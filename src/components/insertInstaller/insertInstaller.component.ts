@@ -15,12 +15,12 @@ import { Router } from "@angular/router";
     }
     ngOnInit(){
 
-    }
+    } 
 
     insert(f:NgForm){
         this.installerService.newInstaller("3",f.value.nome,f.value.cognome,f.value.email,f.value.username,f.value.password).subscribe((response) => {
             if (response != null) {
-              this.router.navigateByUrl("/installerManager");
+              this.router.navigateByUrl("/gestioneInstaller");
             }
             
         });

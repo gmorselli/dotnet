@@ -10,7 +10,7 @@
             <div class="idCustomer"><h3>Username Installer:</h3>
                 <div style="padding-left:2%">
                     <select name="usernameSelected" ngModel="usernameSelected">
-                      <option *ngFor="let customer of installers" [attr.value]="customer.username">{{customer.username}}</option>
+                      <option *ngFor="let customer of installers" [value]="customer.username">{{customer.username}}</option>
                 </select>
                 </div>
                 

@@ -26,7 +26,7 @@ import { NewCustomer } from "src/models/NewCustomer";
             console.log("username="+this.username);
             this.installerService.delete(this.username).subscribe((response)=>{
                 if (response != null) {
-                    this.router.navigateByUrl("/installerManager");
+                    this.router.navigateByUrl("/gestioneInstaller");
                   }
             });
     }

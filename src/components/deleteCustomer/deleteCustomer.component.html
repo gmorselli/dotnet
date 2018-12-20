@@ -12,7 +12,7 @@
 			Id Customer: </h2>
             <div >
                 <select class="select" name="usernameSelected" ngModel="usernameSelected">
-                    <option *ngFor="let customer of customers" [attr.value]="customer.username">{{customer.username}}</option>
+                    <option *ngFor="let customer of customers" [value]="customer.username">{{customer.username}}</option>
               </select>
 			</div>
 		</div>

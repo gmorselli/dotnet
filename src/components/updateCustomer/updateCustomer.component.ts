@@ -29,6 +29,7 @@ export class UpdateCustomerComponent implements OnInit{
     update(f:NgForm){
         
         this.username=f.value.usernameSelected;
+        console.log("funziona???"+this.username);
         this.field=f.value.fieldSelected;
         this.newValue=f.value.value;
         this.customerService.update(this.username,this.field,this.newValue).subscribe((response) => {

@@ -32,7 +32,7 @@ import { Installer } from "src/models/Installer";
         this.value=f.value.value;
         console.log("username= "+this.username+"field= "+this.field+"value= "+this.value );
         this.installerService.update(this.username,this.field,this.value).subscribe((response) => {
-            this.router.navigateByUrl("/installerManager")
+            this.router.navigateByUrl("/gestioneInstaller")
         });
         
     }
