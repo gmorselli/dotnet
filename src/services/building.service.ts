@@ -11,7 +11,7 @@ import { Building } from '../models/Building';
     providedIn: 'root'
 })
 export class BuildingService {
-    baseUrl = 'http://localhost:8080/';
+    baseUrl = 'http://localhost:51947/api/';
     
     constructor(private http: HttpClient) {}
 
@@ -43,28 +43,23 @@ export class BuildingService {
     }
 
     newBuilding(indirizzo:string, interno:string, city:string, username:string, cap:string):Observable<Building>{
-        const params = new HttpParams().set('indirizzo',indirizzo).set('interno',interno).set('city',city).
-        set('username',username).set('cap',cap);
-
-        return this.http.post<Building>('http://localhost:8080/Building/new',params);
+        return this.http.post<Building>(this.baseUrl+'Building/InserisciB?indirizzo='+indirizzo+'&cap='+cap+'&citta='+city+'&interno='+interno+'&id='+username,'');
     }
 
     findAll():Observable<Array<Building>>{
-        return this.http.get<Array<Building>>('http://localhost:8080/Building/read');
+        return this.http.get<Array<Building>>(this.baseUrl+'Building');
     }
 
     delete(buildingId : string):Observable<boolean>{
-        let url : string = 'http://localhost:8080/Building/delete?buildingId='+buildingId;
-        return this.http.get<boolean>(url);
+        //let url : string = 'http://localhost:8080/Building/delete?buildingId='+buildingId;
+        return this.http.delete<boolean>(this.baseUrl+'Building?id='+buildingId);
 
     }
    
     update(idSelected: string, newindirizzo: string, newinterno: string, newcitta: string, newcap: string):Observable<Building>{
         console.log(idSelected+" "+newinterno+" "+newindirizzo+" "+newcitta+" "+newcap);
-        const params = new HttpParams().set('buildingId',idSelected).set('indirizzo', newindirizzo).set('interno',newinterno).
-        set('city', newcitta).set('cap', newcap);
         console.log("ok");
-        return this.http.post<Building>('http://localhost:8080/Building/edit', params);
+        return this.http.put<Building>(this.baseUrl+'Building?id='+idSelected+'&indirizzo='+newindirizzo+'&cap='+newcap+'&citta='+newcitta+'&interno='+newinterno,"");
     }
 
 }

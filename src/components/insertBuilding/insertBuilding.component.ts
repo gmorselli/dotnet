@@ -21,8 +21,8 @@ export class InsertBuildingComponent implements OnInit{
 
         var customer = sessionStorage.getItem("user");
         var myCustomer = JSON.parse(customer);
-        console.log(myCustomer.username);
-        this.buildingService.newBuilding(f.value.indirizzo,f.value.interno,f.value.city, myCustomer.username,f.value.cap).subscribe((Response) => {
+        console.log(myCustomer.id);
+        this.buildingService.newBuilding(f.value.indirizzo,f.value.interno,f.value.city, myCustomer.id,f.value.cap).subscribe((Response) => {
             console.log("compareeeee");
 
             if(Response != null){
