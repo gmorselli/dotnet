@@ -6,9 +6,17 @@ import { NewCustomer } from "src/models/NewCustomer";
 import { tap, catchError } from 'rxjs/operators';
 import {Observable, of, BehaviorSubject} from 'rxjs';
 
+
+const base="http://localhost:51947/api/";
+
 @Injectable({ providedIn: 'root'}) 
 export class CustomerService{
+
+
     constructor( private http : HttpClient){}
+
+    
+
 
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
@@ -17,18 +25,14 @@ export class CustomerService{
             console.log('${operation} failed: ${error.message}');
             return of(result as T);
         };
-    }
+    } 
     login(username:string, password:string):Observable<Customer>{
         const params = new HttpParams().set('username', username).set('password', password);
-        return this.http.post<Customer>('http://localhost:8080/user/login',params).
+        return this.http.get<Customer>(base+'Login/Login?username='+username+"&password="+password).
         pipe(tap((response) => console.log("Utente"), catchError(this.handleError("login error", {})))
         );
     }
 
-    test():Observable<Customer[]>{
-        return this.http.get<Customer[]>("http://localhost:51947/api/Customer").
-        pipe(tap((response) => console.log("Customer"), catchError(this.handleError("login error", {}))));
-    }
 
     newCustomer(userRole:string, name:string, 
         surname:string, email:string, username:string, password:string ): Observable<NewCustomer>{
@@ -36,7 +40,7 @@ export class CustomerService{
           const params = new HttpParams().set('userRole', userRole).
            set('name', name).set('surname', surname).set('email', email).set('username', username).set('password', password);
         
-        return this.http.post<NewCustomer>('http://localhost:8080/Customer/new', params); 
+        return this.http.post<NewCustomer>(base+'Inserisci?nome='+name+'&cognome='+surname+'&username='+username+'&password='+password+'&user_role='+userRole+'&email='+email,""); 
   
     }
     newManufacturer(userRole:string, name:string, 
@@ -49,7 +53,7 @@ export class CustomerService{
   
     }
     readAll():Observable<Array<NewCustomer>>{
-        return this.http.get<Array<NewCustomer>>('http://localhost:8080/Customer/read');
+        return this.http.get<Array<NewCustomer>>(base+"Customer");
     }
     readAllManufacturers():Observable<Array<NewCustomer>>{
         return this.http.get<Array<NewCustomer>>('http://localhost:8080/Customer/readManufacturers');

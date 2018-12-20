@@ -60,14 +60,11 @@ export class LoginComponent implements OnInit{
   constructor(private customerService:CustomerService, private router:  Router){
 
   }
-  ngOnInit(){
-    console.log("eccolo");
-    this.customerService.test().subscribe((response)=>{
-      console.log("eccolooooooo:"+response[0].username);
-    })
+  ngOnInit(){    
   }
+
   login(f:NgForm): void{
-    console.log("mi arrivano username="+ f.value.username + " password= "+ f.value.password)
+    console.log("mi arrivano username="+ f.value.username + " password="+ f.value.password)
     this.customerService.login(f.value.username, f.value.password).subscribe((response) => {
       if (response != null) {
         this.customer=response;
