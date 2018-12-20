@@ -15,7 +15,7 @@
         <h2>Quale floor vuoi modificare?</h2>
         <form #f="ngForm">
             <select id="id" name="id" ngModel="floor.id">
-                <option *ngFor="let room of rooms" [attr.value]="room.id" >{{room.id}}</option>
+                <option *ngFor="let room of rooms" [value]="room.id" >{{room.id}}</option>
             </select>
             <h3>Inserire nome floor: <input type="text" name="nomeRoom" placeholder="inserire nome room" ngModel></h3>
             <h3>Inserire descrizione: <input type="text" name="descrizione" placeholder="inserire descrizione" ngModel></h3>

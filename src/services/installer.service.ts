@@ -37,8 +37,7 @@ const base="http://localhost:51947/api/";
       return this.http.delete<boolean>(base+'Customer?username='+username);
     }
 
-    associazioneBuildings(buildingId : string, username:string): Observable<Array<NewCustomer>>{
-      const params = new HttpParams().set('buildingId', buildingId).set('username',username);
-      return this.http.post<Array<NewCustomer>>('http://localhost:8080/Building/associazioneBuildingInstaller',params);
+    associazioneBuildings(buildingId : number, username:string): Observable<Array<NewCustomer>>{
+      return this.http.post<Array<NewCustomer>>(base+"Building/AssociaACustomer?buildingID="+buildingId+"&username="+username,"");
     }
 }

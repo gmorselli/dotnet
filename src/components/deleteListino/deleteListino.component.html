@@ -12,7 +12,7 @@
 			Id listino: </h2>
             <div >
                 <select class="select" name="idSelected" ngModel="idSelected">
-                    <option *ngFor="let lista of listino" [attr.value]="lista.id">{{lista.id}}</option>
+                    <option *ngFor="let lista of listino" [value]="lista.id">{{lista.id}}</option>
               </select>
 			</div>
 		</div>

@@ -10,7 +10,7 @@
 
         <select id="carSelect" (change)="changeCar()" #carSelect>
             <option value="">Seleziona auto</option>
-            <option *ngFor="let car of carsList" [attr.value]="car.id">{{car.name}}</option>
+            <option *ngFor="let car of carsList" [value]="car.id">{{car.name}}</option>
         </select>
 
         <br>

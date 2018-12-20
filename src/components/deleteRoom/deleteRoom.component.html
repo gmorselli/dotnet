@@ -16,7 +16,7 @@
         <h2>Quale room vuoi eliminare?</h2>
         <form #f="ngForm">
             <select id="id" name="id" ngModel="room.id">
-                <option *ngFor="let room of rooms" [attr.value]="room.id">{{room.id}}</option>
+                <option *ngFor="let room of rooms" [value]="room.id">{{room.id}}</option>
             </select>
             <button type ="submit" (click) = "delete(f)">Elimina</button><br>
         </form>
