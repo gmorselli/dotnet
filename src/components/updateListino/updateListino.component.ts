@@ -26,7 +26,9 @@ export class UpdateListinoComponent implements OnInit{
     }
 
     update(f:NgForm){
-        this.listinoService.edit(f.value.idselected, f.value.newNomeListino, f.value.newAnno).subscribe((response) => {
+        var installer = sessionStorage.getItem('user');
+        var myinstaller = JSON.parse(installer);
+        this.listinoService.edit(f.value.idselected, f.value.newNomeListino,myinstaller.id, f.value.newAnno).subscribe((response) => {
             if(response != null){
                 this.router.navigateByUrl("/gestioneListino");
             }

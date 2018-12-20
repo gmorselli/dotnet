@@ -20,9 +20,11 @@ export class InsertListinoComponent implements OnInit{
     }
 
     register(f:NgForm){
-        
-        this.listinoService.newListino(f.value.nomeListino,f.value.anno,f.value.idManufacturer).subscribe((response) => {
-            console.log("anno2 = "+f.value.anno);
+        var installer = sessionStorage.getItem('user');
+        var myinstaller = JSON.parse(installer);
+        console.log(myinstaller.id);
+        this.listinoService.newListino(f.value.nomeListino,f.value.anno,myinstaller.id,f.value.idManufacturer).subscribe((response) => {
+            
             if (response != null) {
               this.router.navigateByUrl("/gestioneListino");
             }
