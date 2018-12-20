@@ -20,8 +20,9 @@ export class ListinoService{
         return this.http.post<Listino>("http://localhost:8080/Listino/insert", params)
     }
 */
-    newListino(nomeListino:string, anno:string,idInstaller : string, idManufacturer:string):Observable<Listino>{
-        return this.http.get<Listino>(base+ "Listino/Inserisci?anno="+anno+"&nome="+nomeListino+"&idInstaller="+idInstaller+"&idManufacturer="+idManufacturer);
+    newListino(nomeListino:string, anno:string,idInstaller : number, idManufacturer:number):Observable<Listino>{
+        console.log("Inserimento listino installer:"+idInstaller+" idManufacturer:"+idManufacturer);
+        return this.http.post<Listino>(base+ "Listino/Inserisci?anno="+anno+"&nome="+nomeListino+"&idInstaller="+idInstaller+"&idManufacturer="+idManufacturer,"");
         
     }
 
