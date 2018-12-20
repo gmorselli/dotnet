@@ -61,7 +61,7 @@ namespace AmebaDevice.Services
             modelloDatiDbContext.SaveChanges();
         }
 
-        public BuildingDTO Modifica(int buildingID, String indirizzo, String cap, String citta, String interno, int customerID)
+        public BuildingDTO Modifica(int buildingID, String indirizzo, String cap, String citta, String interno)
         {
             Building building = new Building();
             foreach (Building b in modelloDatiDbContext.Buildings)
@@ -73,7 +73,7 @@ namespace AmebaDevice.Services
                     building.Cap = cap;
                     building.Citta = citta;
                     building.Interno = interno;
-                    building.Customer = modelloDatiDbContext.Customers.Find(customerID);
+                    //building.Customer = modelloDatiDbContext.Customers.Find(customerID);
                 }
             }
             modelloDatiDbContext.SaveChanges();

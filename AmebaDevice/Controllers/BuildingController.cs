@@ -7,9 +7,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace AmebaDevice.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class BuildingController : ApiController
     {
 
@@ -38,7 +40,7 @@ namespace AmebaDevice.Controllers
         }
 
         [HttpPost]
-        [Route("InserisciB")]
+        [Route("api/Building/InserisciB")]
         public String Inserisci(String indirizzo, String cap, String citta, String interno,int id)
         {
             buildingService.Associa(indirizzo,cap,citta,interno,id);
@@ -46,9 +48,9 @@ namespace AmebaDevice.Controllers
         }
 
         // PUT: api/Building/5?indirizzo=<indirizzo>&cap=<cap>&...
-        public BuildingDTO Put(int id, String indirizzo, String cap, String citta, String interno, int customerID)
+        public BuildingDTO Put(int id, String indirizzo, String cap, String citta, String interno)
         {
-            return buildingService.Modifica(id, indirizzo, cap, citta, interno, customerID);
+            return buildingService.Modifica(id, indirizzo, cap, citta, interno);
         }
 
         // DELETE: api/Building/5
