@@ -80,5 +80,16 @@ namespace AmebaDevice.Services
             return BuildingConverter.convertToDto(building);
         }
 
+
+        public CustomerDTO AssociaACustomer(int buildingID, string username)
+        {
+            Building b = modelloDatiDbContext.Buildings.Find(buildingID);
+            Customer c = modelloDatiDbContext.Customers.Where(cc => cc.Username == username).FirstOrDefault();
+
+            b.Customer = c;
+            modelloDatiDbContext.SaveChanges();
+            return CustomerConverter.convertToDto(c);
+        }
+
     }
 }

@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace AmebaDevice.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class ListinoController : ApiController
     {
 
@@ -45,9 +47,9 @@ namespace AmebaDevice.Controllers
         }
 
         // PUT: api/Listino/5?anno=<anno>&nome=<nome>&...
-        public ListinoDTO Put(int id, string anno, string nome, int idInstaller, int idManufacturer)
+        public ListinoDTO Put(int id, string anno, string nome, int idInstaller)
         {
-            return listinoService.Modifica(id, anno, nome, idInstaller, idManufacturer);
+            return listinoService.Modifica(id, anno, nome, idInstaller);
         }
 
         // DELETE: api/Listino/5

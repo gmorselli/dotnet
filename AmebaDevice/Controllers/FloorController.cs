@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace AmebaDevice.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class FloorController : ApiController
     {
 
@@ -53,9 +55,9 @@ namespace AmebaDevice.Controllers
 
 
         // PUT: api/Floor/5?nome=<nome>&descrizione=<descrizione>&...
-        public FloorDTO Put(int id, String nome, String descrizione, int idBuilding)
+        public FloorDTO Put(int id, String nome, String descrizione)
         {
-            return floorService.Modifica(id, nome, descrizione, idBuilding);
+            return floorService.Modifica(id, nome, descrizione);
         }
 
         // DELETE: api/Floor/5

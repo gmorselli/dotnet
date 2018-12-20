@@ -65,7 +65,7 @@ namespace AmebaDevice.Services
             modelloDatiDbContext.SaveChanges();
         }
 
-        public FloorDTO Modifica(int id, String nome, String descrizione, int idBuilding)
+        public FloorDTO Modifica(int id, String nome, String descrizione)
         {
             Floor floor = new Floor();
             foreach (Floor f in modelloDatiDbContext.Floors)
@@ -75,7 +75,6 @@ namespace AmebaDevice.Services
                     floor = modelloDatiDbContext.Floors.Where(ff => ff.FloorID == id).FirstOrDefault();
                     floor.Nome = nome;
                     floor.Descrizione = descrizione;
-                    floor.Building = modelloDatiDbContext.Buildings.Find(idBuilding);
                 }
             }
             modelloDatiDbContext.SaveChanges();

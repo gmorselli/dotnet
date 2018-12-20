@@ -53,14 +53,14 @@ namespace AmebaDevice.Services
             modelloDatiDbContext.SaveChanges();
         }
 
-        public ListinoDTO Modifica(int id, string anno, string nome, int idInstaller, int idManufacturer)
+        public ListinoDTO Modifica(int id, string anno, string nome, int idInstaller)
         {
             Listino l = modelloDatiDbContext.Listini.Find(id);
             l.ListinoID = id;
             l.Anno = anno;
             l.Nome = nome;
             l.Installer = modelloDatiDbContext.Customers.Find(idInstaller);
-            l.Manufacturer = modelloDatiDbContext.Customers.Find(idManufacturer);
+            modelloDatiDbContext.SaveChanges();
             return ListinoConverter.convertToDTO(l);
         }
 

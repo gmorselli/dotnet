@@ -59,5 +59,12 @@ namespace AmebaDevice.Controllers
             buildingService.Delete(id);
             return "Building con id " + id + " eliminato";
         }
+
+        [HttpPost]
+        [Route("api/Building/AssociaACustomer")]
+        public CustomerDTO AssociaACustomer(int buildingID, string username)
+        {
+            return buildingService.AssociaACustomer(buildingID, username);
+        }
     }
 }
