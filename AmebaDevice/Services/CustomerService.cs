@@ -34,9 +34,26 @@ namespace AmebaDevice.Services
             foreach(Customer c in modelloDatiDbContext.Customers)
             {
                 l.Add(CustomerConverter.convertToDto(c));
-                
             }
             
+            return l;
+        }
+
+
+        public IEnumerable<CustomerDTO> GetByUserRole(string userRole)
+        {
+
+            List<CustomerDTO> l = new List<CustomerDTO>();
+
+            foreach (Customer c in modelloDatiDbContext.Customers)
+            {
+                if (c.User_role.Equals(userRole))
+                {
+                    l.Add(CustomerConverter.convertToDto(c));
+                }
+                    
+            }
+
             return l;
 
         }
@@ -47,29 +64,36 @@ namespace AmebaDevice.Services
             return CustomerConverter.convertToDto(c);
         }
 
-        public void Delete(int id)
+        public void Delete(string username)
         {
-            Customer customer = modelloDatiDbContext.Customers.Find(id);
+            Customer customer = modelloDatiDbContext.Customers.Where(c=>c.Username==username).FirstOrDefault();
             modelloDatiDbContext.Customers.Remove(customer);
             modelloDatiDbContext.SaveChanges();
         }
 
-        public CustomerDTO Modifica(int id, String nome, String cognome, String username, String password, String user_role, String email)
+        public CustomerDTO Modifica(string username, int field, string newValue)
         {
             Customer customer = new Customer();
+            /*
             foreach(Customer c in modelloDatiDbContext.Customers)
             {
-                if (c.CustomerID == id)
+                if (c.Username == username)
                 {
-                    customer=modelloDatiDbContext.Customers.Where(custom => custom.CustomerID == id).FirstOrDefault();
-                    customer.Nome = nome;
-                    customer.Cognome = cognome;
-                    customer.Username = username;
-                    customer.Password = password;
-                    customer.User_role = user_role;
-                    customer.Email = email;
-                }
-            }
+                */
+            customer = modelloDatiDbContext.Customers.Where(custom => custom.Username == username).FirstOrDefault();
+            if (field == 1)
+                customer.Nome = newValue;
+            else if (field == 2)
+                customer.Cognome = newValue;
+            else if (field == 3)
+                customer.Email = newValue;
+            else if (field == 4)
+                customer.Username = newValue;
+            else if (field == 5)
+                customer.Password = newValue;
+                    
+                /*}
+            }*/
             modelloDatiDbContext.SaveChanges();
             return CustomerConverter.convertToDto(customer);
         }

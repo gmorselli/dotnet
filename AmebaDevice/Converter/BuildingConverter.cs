@@ -17,7 +17,6 @@ namespace AmebaDevice.Converter
             building.city=b.Citta;
             building.address = b.Indirizzo;
             building.interno = b.Interno;
-            
             if (b.Customer != null)
                 building.customer=CustomerConverter.convertToDto(b.Customer);
             /*

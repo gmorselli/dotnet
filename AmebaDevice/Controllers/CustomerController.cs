@@ -28,6 +28,13 @@ namespace AmebaDevice.Controllers
             return customerService.Get();
         }
 
+        [HttpGet]
+        [Route("api/GetByUserRole")]
+        public IEnumerable<CustomerDTO> GetByUserRole(string userRole)
+        {
+            return customerService.GetByUserRole(userRole);
+        }
+
         // GET: api/Customer/5
         public CustomerDTO Get(int id)
         {
@@ -42,7 +49,7 @@ namespace AmebaDevice.Controllers
 
         //GET: Inserisci/?nome=<nome>&cognome=<cognome>&username=<username>&password=<password>&user_role=<user_role>&email=<email>
         [HttpPost]
-        [Route("Inserisci")]
+        [Route("api/Inserisci")]
         public string Inserisci(string nome, string cognome, string username, string password, string user_role, string email)
         {
             customerService.Inserisci(nome,cognome,username,password,user_role,email);
@@ -50,17 +57,26 @@ namespace AmebaDevice.Controllers
         }
 
 
+
+        // PUT: api/Customer?username=<username>&field=<field>&...
+        public CustomerDTO Put(string username, int field, string newValue)
+        {
+            return customerService.Modifica(username, field, newValue);
+        }
+
+        /*
         // PUT: api/Customer/5?nome=<nome>&cognome=<cognome>&...
         public CustomerDTO Put(int id, string nome, string cognome, string username, string password, string user_role, string email)
         {
             return customerService.Modifica(id, nome, cognome, username, password, user_role, email);
         }
+        */
 
         // DELETE: api/Customer/5
-        public string Delete(int id)
+        public bool Delete(string username)
         {
-            customerService.Delete(id);
-            return "Customer con id " + id + " eliminato";
+            customerService.Delete(username);
+            return true;
         }
         
     }
