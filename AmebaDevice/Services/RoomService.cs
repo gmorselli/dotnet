@@ -63,7 +63,7 @@ namespace AmebaDevice.Services
             modelloDatiDbContext.SaveChanges();
         }
 
-        public RoomDTO Modifica(int id, String nome, String descrizione, int floorID)
+        public RoomDTO Modifica(int id, String nome, String descrizione)
         {
             Room room = new Room();
             foreach (Room r in modelloDatiDbContext.Rooms)
@@ -73,11 +73,21 @@ namespace AmebaDevice.Services
                     room = modelloDatiDbContext.Rooms.Where(rr => rr.RoomId == id).FirstOrDefault();
                     room.Nome = nome;
                     room.Descrizione = descrizione;
-                    room.Floor = modelloDatiDbContext.Floors.Find(floorID);
                 }
             }
             modelloDatiDbContext.SaveChanges();
             return RoomConverter.convertToDto(room);
+        }
+
+
+        public FloorDTO myFloor(int idRoom)
+        {
+            Room room = new Room();
+            room = modelloDatiDbContext.Rooms.Find(idRoom);
+            Floor floor = new Floor();
+
+            floor = room.Floor;
+            return FloorConverter.convertToDto(floor);
         }
 
     }

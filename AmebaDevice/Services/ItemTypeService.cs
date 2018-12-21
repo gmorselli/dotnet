@@ -49,7 +49,7 @@ namespace AmebaDevice.Services
             Inserisci();
         }
 
-        public ItemTypeDTO Modifica(int id, string categoria, string descrizione, string marca, string modello, int idCustomer)
+        public ItemTypeDTO Modifica(int id, string categoria, string descrizione, string marca, string modello)
         {
             ItemType item = ModelloDatiDbContext.ItemTypes.Find(id);
             //ItemType item = new ItemType();
@@ -57,7 +57,6 @@ namespace AmebaDevice.Services
             item.Descrizione = descrizione;
             item.Marca = marca;
             item.Modello = modello;
-            item.Customer = ModelloDatiDbContext.Customers.Find(idCustomer);
             ModelloDatiDbContext.SaveChanges();
 
             return ItemTypeConverter.ConverToDTO(item);

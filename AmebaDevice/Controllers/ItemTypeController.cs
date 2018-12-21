@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace AmebaDevice.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class ItemTypeController : ApiController
     {
         ItemTypeService ItemTypeService;
@@ -34,9 +36,9 @@ namespace AmebaDevice.Controllers
         }
 
         // PUT: api/ItemType/5
-        public ItemTypeDTO Put(int id, string categoria, string descrizione, string marca, string modello, int idCustomer)
+        public ItemTypeDTO Put(int id, string categoria, string descrizione, string marca, string modello)
         {
-            return ItemTypeService.Modifica(id, categoria, descrizione, marca, modello, idCustomer);
+            return ItemTypeService.Modifica(id, categoria, descrizione, marca, modello);
         }
 
         // DELETE: api/ItemType/5

@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace AmebaDevice.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class ItemController : ApiController
     {
         ItemService itemService;
@@ -49,10 +51,26 @@ namespace AmebaDevice.Controllers
 
         [HttpPost]
         [Route("api/Item/Inserisci")]
-        public String Inserisci(int id, string seriale, string consumoEnergetico, int idItemType, int idRoom, int idThing)
+        public ItemDTO Inserisci(int id, string seriale, string consumoEnergetico, int idItemType, int idRoom, int idThing)
         {
-            itemService.Associa(id, seriale, consumoEnergetico, idItemType, idRoom, idThing);
-            return "l'Item con id=" + id + " è stato inserito";
+            return itemService.Associa(id, seriale, consumoEnergetico, idItemType, idRoom, idThing);
         }
+
+
+        [HttpGet]
+        [Route("api/Item/findByRoom")]
+        public IEnumerable<ItemDTO> findByRoom(int roomId)
+        {
+            return itemService.findByRoom(roomId);
+        }
+
+
+        [HttpGet]
+        [Route("api/Item/findByBuilding")]
+        public IEnumerable<ItemDTO> findByBuilding(int buildingId)
+        {
+            return itemService.findByBuilding(buildingId);
+        }
+
     }
 }

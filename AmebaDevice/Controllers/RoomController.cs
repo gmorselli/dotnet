@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace AmebaDevice.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class RoomController : ApiController
     {
 
@@ -37,9 +39,9 @@ namespace AmebaDevice.Controllers
         }
 
         // PUT: api/Room/5?nome=<nome>&descrizione=<descrizione>&...
-        public RoomDTO Put(int id, String nome, String descrizione, int floorID)
+        public RoomDTO Put(int id, String nome, String descrizione)
         {
-            return roomService.Modifica(id,nome,descrizione,floorID);
+            return roomService.Modifica(id,nome,descrizione);
         }
 
         // DELETE: api/Room/5
@@ -50,7 +52,7 @@ namespace AmebaDevice.Controllers
         }
 
         [HttpGet]
-        [Route("GetByFloor")]
+        [Route("api/GetByFloor")]
         public IEnumerable<RoomDTO> GetByFloor(int idFloor)
         {
             return roomService.getAllByFloor(idFloor);
@@ -58,13 +60,20 @@ namespace AmebaDevice.Controllers
 
 
         [HttpPost]
-        [Route("InserisciR")]
+        [Route("api/InserisciR")]
         public String Inserisci(String nome, String descrizione, int idFloor)
         {
             roomService.Associa(nome, descrizione, idFloor);
             return "La room con nome= " + nome + " è stata inserita";
         }
 
+
+        [HttpGet]
+        [Route("api/myFloor")]
+        public FloorDTO myFloor(int roomId)
+        {
+            return roomService.myFloor(roomId);
+        }
       
     }
 }
