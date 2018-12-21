@@ -17,8 +17,10 @@ import { Router } from "@angular/router";
     }
     
     insert(f:NgForm){
-   
-      this.itemtypeService.addNewItemType(f.value.marca,f.value.modello,f.value.categoria,f.value.descrizione).subscribe((response) => {
+      var customer = sessionStorage.getItem('user');
+      var myinstaller = JSON.parse(customer)
+      console.log(myinstaller.id)
+      this.itemtypeService.addNewItemType(f.value.marca,f.value.modello,f.value.categoria,myinstaller.id,f.value.descrizione).subscribe((response) => {
         if (response != null) {
           this.router.navigateByUrl("/itemtype");
         }

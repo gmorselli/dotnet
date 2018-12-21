@@ -21,9 +21,9 @@ export class InsertListinoComponent implements OnInit{
 
     register(f:NgForm){
         var installer = sessionStorage.getItem('user');
-        var myinstaller = JSON.parse(installer);
-        console.log(myinstaller.id);
-        this.listinoService.newListino(f.value.nomeListino,f.value.anno,myinstaller.id,f.value.idManufacturer).subscribe((response) => {
+        var mycustomer = JSON.parse(installer);
+        console.log(mycustomer.id);
+        this.listinoService.newListino(f.value.nomeListino,f.value.anno,mycustomer.id,f.value.idManufacturer).subscribe((response) => {
             
             if (response != null) {
               this.router.navigateByUrl("/gestioneListino");

@@ -3,6 +3,8 @@ import { Observable, of } from "rxjs";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import {ItemType} from "../models/ItemType";
 
+const base="http://localhost:51947/api/";
+
 @Injectable({
     providedIn: 'root'
   })
@@ -18,20 +20,20 @@ import {ItemType} from "../models/ItemType";
     }
 
     MyitemTypeList(): Observable<Array<ItemType>>{
-    return this.http.get<Array<ItemType>>('http://localhost:8080/ItemType/read');
+    return this.http.get<Array<ItemType>>(base+'ItemType');
     }
 
     deleteItemType(itemTypeId: string){
-      return this.http.get<ItemType>('http://localhost:8080/ItemType/delete?itemTypeId='+itemTypeId);
+      return this.http.delete<ItemType>(base+'ItemType?id='+itemTypeId);
     }
 
-    addNewItemType(categoria:string,modello:string,marca:string,descrizione:string):  Observable<ItemType>{
-      const params = new HttpParams().set('categoria', categoria).set('modello',modello).set('marca',marca).set('descrizione',descrizione);
-      return this.http.post<ItemType>('http://localhost:8080/ItemType/new', params);
+    addNewItemType(categoria:string,modello:string,marca:string,idCustomer:string,descrizione:string):  Observable<ItemType>{
+      console.log("marca= "+marca+ ", idInstaller="+idCustomer);
+    //  const params = new HttpParams().set('categoria', categoria).set('modello',modello).set('marca',marca).set('descrizione',descrizione);
+      return this.http.post<ItemType>(base+"ItemType/Inserisci?categoria="+categoria+"&descrizione="+descrizione+"&marca="+marca+"&modello="+modello+"&idCustomer="+idCustomer, '');
     }
 
     updateItemType(itemTypeId:string,categoria:string,modello:string,marca:string,descrizione:string): Observable<ItemType>{
-      const params = new HttpParams().set('itemTypeId',itemTypeId).set('categoria', categoria).set('modello',modello).set('marca',marca).set('descrizione',descrizione);
-      return this.http.post<ItemType>('http://localhost:8080/ItemType/edit', params);
+      return this.http.put<ItemType>(base+"ItemType?id="+itemTypeId+"&categoria="+categoria+"&descrizione="+descrizione+"&marca="+marca+"&modello="+modello,'');
     }
   }
