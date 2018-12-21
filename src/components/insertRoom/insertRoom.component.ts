@@ -22,7 +22,7 @@ export class InsertRoomComponent implements OnInit{
         console.log("insert Room! "+this.floorId);
     }
 
-    register(f:NgForm, floorId:string){
+    register(f:NgForm, floorId:number){
         console.log(f.value.nomeRoom+" "+f.value.descrizione+" "+floorId);
         this.roomService.newRoom(f.value.nomeRoom, f.value.descrizione, floorId).subscribe((Response) => {
            

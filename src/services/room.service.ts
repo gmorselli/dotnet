@@ -11,11 +11,11 @@ import { Floor } from 'src/models/Floor';
 
 export class RoomService {
    
-    baseUrl = 'http://localhost:8080/';
+    baseUrl = 'http://localhost:51947/api/';
 
     roomsByFloor(floorId: string): Observable<Array<Room>> {
 
-        let url : string = this.baseUrl + 'Room?floorId=' + floorId;
+        let url : string = this.baseUrl + 'GetByFloor?idFloor=' + floorId;
         return this.http.get<Array<Room>>(url);
     }
     
@@ -30,32 +30,25 @@ export class RoomService {
         };
     }
 
-    updateRoom(id: string, nomeRoom: string, descrizione: string): Observable<Room> {
-        const params = new HttpParams().set('roomId', id)
-        .set('nome_room', nomeRoom)
-        .set('descrizione', descrizione);
-        return this.http.post<Room>('http://localhost:8080/Room/edit', params);  
-    }
-    newRoom(nomeRoom: string, descrizione: string, floorId: string): Observable<Room> {
-        const params = new HttpParams().set('nome_room', nomeRoom).set('descrizione', descrizione).set('floorId', floorId);
-        console.log(nomeRoom+" "+descrizione+" "+floorId);
-        return this.http.post<Room>('http://localhost:8080/Room/new', params);
+    updateRoom(id: number, nomeRoom: string, descrizione: string): Observable<Room> {
+        return this.http.put<Room>(this.baseUrl+"Room/"+id+"?nome="+nomeRoom+"&descrizione="+descrizione,"");  
     }
 
-    delete(id: String): Observable<boolean> {
-        let url : string = this.baseUrl + 'Room/delete?roomId=' + id;
-        console.log(url);
-        return <Observable<boolean>> this.http.get<boolean>(url);
+
+    newRoom(nomeRoom: string, descrizione: string, floorId: number): Observable<Room> {
+        return this.http.post<Room>(this.baseUrl+"/InserisciR?nome="+nomeRoom+"&descrizione="+descrizione+"&idFloor="+floorId,"");
     }
 
-    findById(roomId: string): Observable<Room> {
-       let url : string = this.baseUrl + 'Room/one?roomId='+roomId;
-       return <Observable<Room>> this.http.get(url);
+    delete(id: number): Observable<boolean> {
+        return this.http.delete<boolean>(this.baseUrl+"Room/"+id);
+    }
+
+    findById(roomId: number): Observable<Room> {
+       return this.http.get<Room>(this.baseUrl+"Room/"+roomId);
     }
 
     myFloor(roomId: string): Observable<Floor> {
-        let url : string = this.baseUrl + 'Room/myFloor?roomId='+roomId;
-       return <Observable<Floor>> this.http.get(url);
+       return this.http.get<Floor>(this.baseUrl+"myFloor?roomId="+roomId);
     }
     
 

@@ -25,15 +25,15 @@ export class CollegaItemRoom{
     private myItems : Array<BasicItem>;
 
     private removedIds : Array<number>;
-
+ 
     constructor(private roomService: RoomService, private itemService: ItemService, private itemTypeService: ItemtypeService, private route: ActivatedRoute, private router : Router){}
     
     ngOnInit() {
         this.roomId = this.route.snapshot.paramMap.get('roomId');   
-        this.roomService.findById(this.roomId).subscribe((response)=>{this.room = response});    
+        this.roomService.findById(Number.parseInt(this.roomId)).subscribe((response)=>{this.room = response});    
         console.log("gestione Items da room");   
         this.itemTypeService.MyitemTypeList().subscribe((response)=>{ this.available = response});
-        this.itemService.findByRoom(this.roomId).subscribe((response)=> {this.myItems = response});
+        this.itemService.findByRoom(Number.parseInt(this.roomId)).subscribe((response)=> {this.myItems = response});
         this.removedIds = new Array();
 
     }
@@ -43,7 +43,7 @@ export class CollegaItemRoom{
         this.myItems.push(newItem);
         console.log("ADDED: "+itemType.categoria+" "+itemType.descrizione+" "+itemType.marca+" "+itemType.modello);
     }
-
+ 
     remove(item: BasicItem){
 
         let myNewItems : Array<BasicItem>;

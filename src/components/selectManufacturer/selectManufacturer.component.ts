@@ -34,7 +34,7 @@ import { NgForm } from '@angular/forms';
             this.manufacturers = response;
             console.log("la size è "+ this.manufacturers.length);
         });
-        this.itemService.findByBuilding(this.buildingId).subscribe((response)=>{
+        this.itemService.findByBuilding(Number.parseInt(this.buildingId)).subscribe((response)=>{
             this.items=response;
             console.log(response.length);
         })

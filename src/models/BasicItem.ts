@@ -2,11 +2,11 @@ import { ItemType } from "./ItemType";
 import { Room } from "./Room";
 
 export class BasicItem {
-
+ 
     id: number;
     room: Room;
-    itemType: ItemType;
-
+    itemType: ItemType; 
+ 
     constructor(id: number, room: Room, itemType: ItemType) {
         //console.log("sto costruendo un Basic item");
         this.id = id;

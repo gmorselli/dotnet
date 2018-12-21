@@ -4,7 +4,7 @@ export class ItemType{
     modello: string
     marca: string
     descrizione: string
-
+ 
     constructor(id:number,categoria:string,modello:string,marca:string,descrizione:string){
         this.id=id;
         this.categoria=categoria;

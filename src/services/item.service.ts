@@ -5,13 +5,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { NewItem } from 'src/models/NewItem';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root' 
   })
   export class ItemService{
    
     
 
-    baseUrl = 'http://localhost:8080/';
+    baseUrl = 'http://localhost:51947/api/';
    
     constructor(private http: HttpClient) { }
 
@@ -21,18 +21,17 @@ import { NewItem } from 'src/models/NewItem';
         console.log('${operation} failed: ${error.message}');
         return of(result as T);
       };
-    }
+    } 
 
-    findByRoom(roomId: string): Observable<Array<BasicItem>> {
-        let url : string = this.baseUrl + 'Item/byRoom?roomId=' + roomId;
-        console.log(url);
-        return <Observable<Array<BasicItem>>> this.http.get<Array<BasicItem>>(url);
+    findByRoom(roomId: number): Observable<Array<BasicItem>> {
+        let url : string = this.baseUrl + 'Item/findByRoom?roomId=' + roomId;
+        return this.http.get<Array<BasicItem>>(url);
     }
     
 
-    findByBuilding(buildingId: string): Observable<Array<NewItem>>{
-        let url : string = this.baseUrl+"Item/byBuilding?buildingId="+buildingId;
-        return <Observable<Array<NewItem>>> this.http.get<Array<NewItem>>(url);  
+    findByBuilding(buildingId: number): Observable<Array<NewItem>>{
+        let url : string = this.baseUrl+"Item/findByBuilding?buildingId="+buildingId;
+        return this.http.get<Array<NewItem>>(url);  
     }
 
 
@@ -43,17 +42,15 @@ import { NewItem } from 'src/models/NewItem';
         console.log("room" + room);
         let itemType = String(item.itemType.id);
         console.log("itemType" +itemType);
-        let params= new HttpParams().set('roomId', room)
-        .set('itemTypeId', itemType);
         console.log("sto per tornare");
-        return <Observable<BasicItem>> this.http.post(url, params); 
-       
+        
+        return this.http.post<BasicItem>(this.baseUrl+"Item/Inserisci?id="+item.id+"&seriale="+null+"&consumoEnergetico="+null
+                +"&idItemType="+itemType+"&idRoom="+room+"&idThing="+0,"")       
     }
 
     delete(id: number): Observable<boolean> {
-        console.log("per il momento non cancello "+id);
-        let url = this.baseUrl+"Item/delete?itemId="+id;
-        return <Observable<boolean>> this.http.get(url);
+        let url = this.baseUrl+"Item/"+id;
+        return this.http.delete<boolean>(url);
     }
 
 
