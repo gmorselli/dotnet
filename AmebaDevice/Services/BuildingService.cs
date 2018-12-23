@@ -61,6 +61,26 @@ namespace AmebaDevice.Services
             modelloDatiDbContext.SaveChanges();
         }
 
+
+        public List<BuildingDTO> GetByInstaller(string username)
+        {
+            //Ottengo il customer con lo username passatomi come parametro
+            Customer customer = modelloDatiDbContext.Customers.Where(c => c.Username.Equals(username)).FirstOrDefault();
+
+            //Ottengo la lista di building che hanno come customerID (chiave esterna) l'id del customer trovato in precedenza
+            List<Building> buildings = modelloDatiDbContext.Buildings.Where(b => b.Customer.CustomerID == customer.CustomerID).ToList();
+
+            List<BuildingDTO> buildingDTOs = new List<BuildingDTO>();
+
+            foreach(Building b in buildings)
+            {
+                buildingDTOs.Add(BuildingConverter.convertToDto(b));
+            }
+
+            return buildingDTOs;
+        }
+
+
         public BuildingDTO Modifica(int buildingID, String indirizzo, String cap, String citta, String interno)
         {
             Building building = new Building();

@@ -71,29 +71,22 @@ namespace AmebaDevice.Services
             modelloDatiDbContext.SaveChanges();
         }
 
-        public CustomerDTO Modifica(string username, int field, string newValue)
+        public CustomerDTO Modifica(string username, string field, string newValue)
         {
             Customer customer = new Customer();
-            /*
-            foreach(Customer c in modelloDatiDbContext.Customers)
-            {
-                if (c.Username == username)
-                {
-                */
+            
             customer = modelloDatiDbContext.Customers.Where(custom => custom.Username == username).FirstOrDefault();
-            if (field == 1)
+            if (field.Equals("Nome"))
                 customer.Nome = newValue;
-            else if (field == 2)
+            else if (field.Equals("Cognome"))
                 customer.Cognome = newValue;
-            else if (field == 3)
+            else if (field.Equals("Email"))
                 customer.Email = newValue;
-            else if (field == 4)
+            else if (field.Equals("Username"))
                 customer.Username = newValue;
-            else if (field == 5)
+            else if (field.Equals("Password"))
                 customer.Password = newValue;
                     
-                /*}
-            }*/
             modelloDatiDbContext.SaveChanges();
             return CustomerConverter.convertToDto(customer);
         }

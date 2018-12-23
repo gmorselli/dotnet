@@ -59,7 +59,7 @@ namespace AmebaDevice.Controllers
 
 
         // PUT: api/Customer?username=<username>&field=<field>&...
-        public CustomerDTO Put(string username, int field, string newValue)
+        public CustomerDTO Put(string username, string field, string newValue)
         {
             return customerService.Modifica(username, field, newValue);
         }

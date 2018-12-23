@@ -34,6 +34,13 @@ namespace AmebaDevice.Controllers
             return buildingService.Get(id);
         }
 
+        [HttpGet]
+        [Route("api/Building/GetByInstaller")]
+        public List<BuildingDTO> GetByInstaller(string username)
+        {
+            return buildingService.GetByInstaller(username);
+        }
+
         // POST: api/Building
         public void Post([FromBody]string value)
         {
