@@ -20,8 +20,14 @@
                 </tr>
                 <tr>
                     <td><h2>Id Manufacturer:</h2></td>
-                    <td><input type="text" class="form-control" id="idManufacturer" name="idManufacturer"
-                        placeholder="Inserisci Id Manufacturer" ngModel></td>
+                    
+                    <td>
+                        <select name="idSelected" ngModel="idSelected" class="form-control">
+                            <option *ngFor="let idM of idManufacturers" [value]="idM">{{idM}}</option>
+                        </select>
+                    </td>
+
+                    
                 </tr>
                 
             </table>

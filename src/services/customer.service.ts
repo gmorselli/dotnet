@@ -12,12 +12,11 @@ const base="http://localhost:51947/api/";
 @Injectable({ providedIn: 'root'}) 
 export class CustomerService{
 
+    //1:Superuser; 2:Customer; 3:Installer; 4:Manufacturer;
 
     constructor( private http : HttpClient){}
 
     
-
-
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
             console.log(result);
@@ -41,21 +40,13 @@ export class CustomerService{
         return this.http.post<NewCustomer>(base+'Inserisci?nome='+name+'&cognome='+surname+'&username='+username+'&password='+password+'&user_role='+userRole+'&email='+email,"");
     } 
 
-    newManufacturer(userRole:string, name:string, 
-        email:string): Observable<NewCustomer>{
-        
-          const params = new HttpParams().set('userRole', userRole).
-           set('name', name).set('email', email);
-        
-        return this.http.post<NewCustomer>('http://localhost:8080/Customer/manufacturer', params); 
-    
+    newManufacturer(userRole:string, name:string, email:string): Observable<NewCustomer>{
+           return this.http.post<NewCustomer>(base+'Inserisci?nome='+name+'&cognome='+null+'&username='+null+'&password='+null+'&user_role='+userRole+'&email='+email,"");
     } 
     readAll():Observable<Array<NewCustomer>>{
         return this.http.get<Array<NewCustomer>>(base+"GetByUserRole?userRole="+2);
     }
-    readAllManufacturers():Observable<Array<NewCustomer>>{
-        return this.http.get<Array<NewCustomer>>('http://localhost:8080/Customer/readManufacturers');
-    }
+    
     readOne(customerId:string): Observable<Customer>{
         return this.http.get<Customer>('http://localhost:8080/Customer?customerId='+customerId);
     }
@@ -63,6 +54,11 @@ export class CustomerService{
         const params = new HttpParams().set('username', username);
         return this.http.post<Customer>('http://localhost:8080/Customer/readOne',params);
     }
+
+    readByUserRole(userRole:string):Observable<Array<any>>{
+        return this.http.get<Array<any>>(base+"GetByUserRole?userRole="+userRole);
+    }
+
     delete(username:string):Observable<boolean>{
         return this.http.delete<boolean>(base+'Customer?username='+username);
     }

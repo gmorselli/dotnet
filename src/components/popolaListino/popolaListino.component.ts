@@ -37,7 +37,7 @@ export class PopolaListinoComponent implements OnInit{
         this.prezzoService.insert(prezzo,itemTypeId,idListino).subscribe((response)=>{ 
             if (response!=null){
                 let newPrezzo: Array<Prezzo>;
-                newPrezzo= new Array();
+                newPrezzo= new Array(); 
                 this.prezzoAvaible= new Array();
                 this.prezzoAvaible.forEach(tabellaPrezzo=>{
                     this.prezzoService.save(tabellaPrezzo).subscribe((response)=> {tabellaPrezzo = response});

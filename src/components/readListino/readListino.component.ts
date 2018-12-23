@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ListinoService } from "src/services/listino.service";
 import { Router } from "@angular/router";
-import { CustomerService } from "src/services/customer.service";
 import { Listino } from "src/models/Listino";
 
 @Component({
@@ -18,7 +17,7 @@ export class ReadListinoComponent implements OnInit{
 
      }
 
-     ngOnInit(){
+     ngOnInit(){ 
          this.listinoService.readListino().subscribe((response) => {
              this.listino = response;
          }) 

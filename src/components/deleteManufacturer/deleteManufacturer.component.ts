@@ -14,7 +14,7 @@ export class DeleteManufacturerComponent implements OnInit{
     constructor(private customerService: CustomerService, private router: Router){}
     ngOnInit(){ 
         console.log("sono qua!");
-        this.customerService.readAllManufacturers().subscribe((response) => {
+        this.customerService.readByUserRole("4").subscribe((response) => {
         this.manufacturers = response;
     });
     

@@ -12,7 +12,7 @@ export class InsertManufacturerComponent implements OnInit{
     constructor(private customerService: CustomerService,private router: Router){}
     ngOnInit() {}
 
-    register(f:NgForm){
+    register(f:NgForm){ 
    
         this.customerService.newManufacturer("4",f.value.nome,f.value.email).subscribe((response) => {
           if (response != null) {

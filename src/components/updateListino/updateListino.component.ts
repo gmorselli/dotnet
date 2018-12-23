@@ -17,7 +17,7 @@ export class UpdateListinoComponent implements OnInit{
     constructor(private listinoService:ListinoService, private router:Router){
 
     }
-
+ 
     ngOnInit(){
         this.listinoService.readListino().subscribe((response) => {
             this.listino = response;

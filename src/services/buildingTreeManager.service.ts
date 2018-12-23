@@ -9,7 +9,7 @@ export class BuildingTreeManagerService {
 
     things: any[];
     floors: Floor[];
-    buildingName: string;
+    buildingName: string; 
     addedItemsToTings: any[] = [];
     itemsByThingCounter: any[] = [];
     itemCount: number = 0;

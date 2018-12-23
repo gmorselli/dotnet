@@ -10,7 +10,7 @@ const base="http://localhost:51947/api/";
     providedIn: 'root'
 })
 
-export class ListinoService{
+export class ListinoService{ 
 
     constructor(private http : HttpClient){}
 
@@ -24,7 +24,7 @@ export class ListinoService{
         console.log("Inserimento listino installer:"+idInstaller+" idManufacturer:"+idManufacturer);
         return this.http.post<Listino>(base+ "Listino/Inserisci?anno="+anno+"&nome="+nomeListino+"&idInstaller="+idInstaller+"&idManufacturer="+idManufacturer,"");
         
-    }
+    } 
 
     readListino():Observable<Array<Listino>>{
         return this.http.get<Array<Listino>>(base+"Listino");

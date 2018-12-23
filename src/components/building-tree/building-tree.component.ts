@@ -21,7 +21,7 @@ export class BuildingTreeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private BuildingTreeService: BuildingTreeService,
-    private elRef:ElementRef,
+    private elRef:ElementRef, 
     private buildingTreeManagerService: BuildingTreeManagerService
     ) { }
 

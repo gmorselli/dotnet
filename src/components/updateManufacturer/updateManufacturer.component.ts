@@ -18,7 +18,7 @@ constructor(private customerService: CustomerService,private router:Router){
 
 }
 ngOnInit(){
-    this.customerService.readAllManufacturers().subscribe((response) => {
+    this.customerService.readByUserRole("4").subscribe((response) => {
         this.manufacturers = response;
         console.log("la size è "+ this.manufacturers.length);
     });

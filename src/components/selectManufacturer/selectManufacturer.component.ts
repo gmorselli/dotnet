@@ -30,7 +30,7 @@ import { NgForm } from '@angular/forms';
     }
     ngOnInit(){
         this.buildingId = this.route.snapshot.paramMap.get('buildingId');
-        this.customerService.readAllManufacturers().subscribe((response) => {    
+        this.customerService.readByUserRole("4").subscribe((response) => {    
             this.manufacturers = response;
             console.log("la size è "+ this.manufacturers.length);
         });

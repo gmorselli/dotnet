@@ -10,6 +10,7 @@ import { Prezzo } from "src/models/Prezzo";
 
 export class PrezzoService{
     baseUrl = 'http://localhost:8080/';
+    base = "http://localhost:51947/api/"
 
     constructor(private http : HttpClient){}
     private handleError<T>(operation = 'operation', result?: T) {
@@ -22,7 +23,7 @@ export class PrezzoService{
 
     insert(prezzo:string,itemTypeId:string,idListino:string): Observable<Prezzo>{
         const params= new HttpParams().set("prezzo",prezzo).set("itemTypeId",itemTypeId).set("idListino",idListino);
-        return this.http.post<Prezzo>("http://localhost:8080/Prezzo/new",params);
+        return this.http.post<Prezzo>(this.base+"Prezzo/InserisciItemTypeInListino?prezzo="+prezzo+"&idItemType="+itemTypeId+"&idListino="+idListino,"");
     }
 
     save(prezzo: Prezzo): Observable<Prezzo> {

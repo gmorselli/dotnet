@@ -16,7 +16,7 @@ export class ReadManufacturerComponent implements OnInit{
 
     }
     ngOnInit(){
-        this.customerService.readAllManufacturers().subscribe((response) => {
+        this.customerService.readByUserRole("4").subscribe((response) => {
             this.manufacturers = response;
         });
     }

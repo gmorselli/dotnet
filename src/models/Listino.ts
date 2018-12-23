@@ -5,7 +5,7 @@ export class Listino{
     nomeListino:string;
     anno:string;
     idManufacturer:NewCustomer;
-
+ 
     constructor(nomeListino:string, anno:string, idManufacturer:NewCustomer){
         this.nomeListino = nomeListino;
         this.anno = anno;

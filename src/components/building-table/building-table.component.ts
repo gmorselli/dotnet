@@ -18,7 +18,7 @@ export class BuildingTableComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.buildingService.getBuildingsByInstaller()
         .subscribe(response => this.buildings = response);
   }

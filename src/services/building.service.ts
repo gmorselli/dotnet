@@ -24,6 +24,11 @@ export class BuildingService {
     }
 
     getBuildingsByInstaller():Observable<Building[]> {
+        let installer = JSON.parse(sessionStorage.getItem("user"));
+        
+        return this.http.get<Building[]>(this.baseUrl+"Building/GetByInstaller?username="+installer.username);
+
+        /*
         let installer: Customer = JSON.parse(sessionStorage.getItem('user'));
         let httpHeaders = new HttpHeaders().set('Accept', 'application/json');
         let httpParams = new HttpParams().set('installer', installer.username);
@@ -40,6 +45,7 @@ export class BuildingService {
                 catchError(this.handleError("get all building by Installer Error", {}))
                 )
             );
+        */
     }
 
     newBuilding(indirizzo:string, interno:string, city:string, username:string, cap:string):Observable<Building>{

@@ -66,11 +66,11 @@ export class LoginComponent implements OnInit{
   login(f:NgForm): void{
     console.log("mi arrivano username="+ f.value.username + " password="+ f.value.password)
     this.customerService.login(f.value.username, f.value.password).subscribe((response) => {
-      if (response != null) {
+      if (response != null) { 
         this.customer=response;
-        sessionStorage.setItem("user", JSON.stringify(this.customer));
+        sessionStorage.setItem("user", JSON.stringify(this.customer)); 
            if(response.userRole==1)
-           this.router.navigateByUrl("/superuser");
+           this.router.navigateByUrl("/superuser"); 
             else if(response.userRole==2)
             this.router.navigateByUrl("/gestioneBuilding");
             else if(response.userRole==3)
